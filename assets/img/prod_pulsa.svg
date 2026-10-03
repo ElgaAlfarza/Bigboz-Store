@@ -1,0 +1,24 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+  <defs>
+    <radialGradient id="bg" cx="50%" cy="50%" r="50%">
+      <stop offset="0%" stop-color="#1e293b"/>
+      <stop offset="100%" stop-color="#0f172a"/>
+    </radialGradient>
+    <filter id="glow">
+      <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
+      <feMerge><feMergeNode in="coloredBlur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+  </defs>
+  <rect width="200" height="200" rx="20" fill="url(#bg)"/>
+  <rect x="8" y="8" width="184" height="184" rx="16" fill="none" stroke="#22c55e" stroke-width="2" opacity="0.4"/>
+  <!-- Signal bars -->
+  <rect x="48" y="120" width="18" height="40" rx="4" fill="#22c55e" filter="url(#glow)" opacity="0.7"/>
+  <rect x="76" y="95" width="18" height="65" rx="4" fill="#22c55e" filter="url(#glow)" opacity="0.85"/>
+  <rect x="104" y="70" width="18" height="90" rx="4" fill="#22c55e" filter="url(#glow)"/>
+  <rect x="132" y="45" width="18" height="115" rx="4" fill="#22c55e" filter="url(#glow)"/>
+  <!-- Phone outline -->
+  <rect x="70" y="30" width="60" height="95" rx="10" fill="none" stroke="#64748b" stroke-width="2" opacity="0.5"/>
+  <rect x="85" y="38" width="30" height="5" rx="2.5" fill="#475569" opacity="0.5"/>
+  <text x="100" y="160" text-anchor="middle" font-family="Arial" font-size="11" fill="#22c55e" font-weight="bold">PULSA</text>
+  <text x="100" y="177" text-anchor="middle" font-family="Arial" font-size="9" fill="#94a3b8">Semua Operator</text>
+</svg>

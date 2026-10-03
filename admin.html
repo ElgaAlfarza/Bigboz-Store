@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="robots" content="noindex, nofollow"/>
+  <title>Admin Panel — Bigboz Store</title>
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = { theme: { extend: { colors: { 'brand': '#38bdf8' } } } }
+  </script>
+  <style>
+    :root { --brand: #38bdf8; }
+    body { background:#071324; color:#f1f5f9; accent-color: #38bdf8; color-scheme: dark; font-family: 'Plus Jakarta Sans', sans-serif; }
+    .input-a { width:100%; background:#112642; border:1.5px solid rgba(56,189,248,.18); color:#f1f5f9; border-radius:10px; padding:10px 12px; font-size:14px; outline:none; transition: border-color .15s, box-shadow .15s; }
+    .input-a:focus { border-color:#38bdf8; box-shadow: 0 0 0 3px rgba(56,189,248,.18); }
+    .btn-pri { background:linear-gradient(to right, #0284c7, #38bdf8); color:#fff; font-weight:700; border-radius:10px; padding:10px 20px; border:none; cursor:pointer; transition:.15s; }
+    .btn-pri:hover { opacity: .9; }
+    .btn-pri:disabled { background:#334155; cursor:not-allowed; }
+    .btn-sec { background:#0b1a30; color:#cbd5e1; border:1.5px solid rgba(56,189,248,.2); border-radius:10px; padding:10px 16px; cursor:pointer; transition:.15s; font-size:14px; }
+    .btn-sec:hover { border-color:#38bdf8; color:#38bdf8; }
+    .btn-danger { background:#dc2626; color:#fff; border-radius:8px; padding:6px 12px; border:none; cursor:pointer; font-size:13px; }
+    .btn-danger:hover { background:#ef4444; }
+    .badge-ready { background:#064e3b; color:#34d399; border-radius:999px; padding:2px 10px; font-size:12px; font-weight:700; }
+    .badge-kosong { background:#7f1d1d; color:#f87171; border-radius:999px; padding:2px 10px; font-size:12px; font-weight:700; }
+    .tab-active { background:#38bdf8; color:#031525; font-weight:700; }
+    .tab-btn { border-radius:10px; padding:8px 16px; cursor:pointer; border:none; font-weight:600; font-size:14px; transition:.15s; background:#0b1a30; color:#94a3b8; border:1px solid rgba(56,189,248,.15); }
+    .tab-btn:hover { background:#112642; }
+    .card-produk { background:#0b1a30; border:1.5px solid rgba(56,189,248,.15); border-radius:14px; padding:14px; }
+    .card-produk:hover { border-color:#38bdf8; }
+    /* Drag step */
+    .step-item { background:#071324; border:1px solid rgba(56,189,248,.18); border-radius:8px; padding:8px 12px; display:flex; align-items:center; gap:8px; margin-bottom:6px; }
+    .step-drag { cursor:grab; color:#64748b; font-size:18px; }
+    .step-drag:active { cursor:grabbing; }
+    /* Toast */
+    #toast { position:fixed; top:16px; left:50%; transform:translateX(-50%); z-index:9999; transition:.3s; }
+  </style>
+</head>
+<body class="min-h-screen">
+
+<!-- ══════════════════════════════════════════════════════════
+     LAYAR LOGIN
+══════════════════════════════════════════════════════════ -->
+<div id="layar-login" class="flex items-center justify-center min-h-screen px-4">
+  <div class="bg-slate-800 rounded-2xl p-8 w-full max-w-sm border border-slate-700 shadow-2xl">
+    <div class="text-center mb-6">
+      <p class="text-4xl mb-2">🔐</p>
+      <h1 class="text-2xl font-extrabold text-white"><span class="text-sky-400">BIGBOZ</span> ADMIN</h1>
+      <p class="text-slate-400 text-sm mt-1">Panel Manajemen Toko</p>
+    </div>
+    <div class="space-y-4">
+      <div>
+        <label class="text-slate-400 text-sm block mb-1">Password Admin</label>
+        <input type="password" id="input-pass" class="input-a" placeholder="Masukkan password..." autocomplete="current-password"/>
+        <p id="error-login" class="text-red-400 text-xs mt-1 hidden">Password salah. Coba lagi.</p>
+      </div>
+      <button class="btn-pri w-full py-3 text-base" id="btn-login">🔓 Masuk</button>
+    </div>
+    <p class="text-slate-600 text-xs text-center mt-4">Password default: <code class="text-slate-500">bigboz2024</code></p>
+    <a href="index.html" class="block text-center text-slate-500 text-xs mt-3 hover:text-orange-400">← Kembali ke Toko</a>
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     PANEL ADMIN UTAMA
+══════════════════════════════════════════════════════════ -->
+<div id="panel-admin" class="hidden min-h-screen">
+
+  <!-- Header Admin -->
+  <header class="bg-slate-800/95 backdrop-blur border-b border-slate-700 px-4 py-3 sticky top-0 z-30">
+    <div class="max-w-6xl mx-auto flex items-center justify-between">
+      <div class="flex items-center gap-3">
+        <span class="text-xl font-extrabold text-white"><span class="text-sky-400">BIG</span>BOZ</span>
+        <span class="bg-sky-500/20 text-sky-400 text-xs font-bold px-2 py-0.5 rounded-full border border-sky-500/30">ADMIN</span>
+      </div>
+      <div class="flex items-center gap-2">
+        <a href="index.html" target="_blank" class="btn-sec text-xs px-3 py-2">🏪 Lihat Toko</a>
+        <button id="btn-logout" class="btn-sec text-xs px-3 py-2 text-red-400 border-red-800 hover:border-red-500">🚪 Keluar</button>
+      </div>
+    </div>
+  </header>
+
+  <div class="max-w-6xl mx-auto px-4 py-6">
+
+    <!-- Stats Bar -->
+    <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mb-6" id="stats-bar">
+      <!-- diisi JS -->
+    </div>
+
+    <!-- Tab Nav -->
+    <div class="flex gap-2 mb-6 overflow-x-auto pb-1">
+      <button class="tab-btn tab-active" data-tab="produk">📦 Produk</button>
+      <button class="tab-btn" data-tab="pesanan">🧾 Pesanan</button>
+      <button class="tab-btn" data-tab="pengaturan">⚙️ Pengaturan</button>
+    </div>
+
+    <!-- ─── TAB: PRODUK ─── -->
+    <div id="tab-produk" class="tab-konten">
+
+      <!-- Toolbar -->
+      <div class="flex flex-wrap gap-3 mb-5 items-center justify-between">
+        <div class="flex gap-2 flex-wrap">
+          <button class="btn-pri px-4 py-2 text-sm" id="btn-tambah-produk">➕ Tambah Produk</button>
+          <button class="btn-sec text-sm" id="btn-export">📤 Export JSON</button>
+          <label class="btn-sec text-sm cursor-pointer">
+            📥 Import JSON
+            <input type="file" accept=".json" id="input-import" class="hidden"/>
+          </label>
+        </div>
+        <div class="relative">
+          <span class="absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">🔍</span>
+          <input type="search" id="admin-search" placeholder="Cari produk..." class="input-a pl-9 py-2 text-sm w-52"/>
+        </div>
+      </div>
+
+      <!-- Filter Kategori -->
+      <div id="admin-filter-kat" class="flex gap-2 flex-wrap mb-4">
+        <!-- diisi JS -->
+      </div>
+
+      <!-- Grid Produk Admin -->
+      <div id="grid-admin-produk" class="space-y-3">
+        <!-- diisi JS -->
+      </div>
+    </div>
+
+    <!-- ─── TAB: PESANAN ─── -->
+    <div id="tab-pesanan" class="tab-konten hidden">
+      <div class="bg-slate-800 border border-slate-700 rounded-2xl p-5">
+        <h2 class="text-white font-bold text-lg mb-3">📋 Daftar Pesanan</h2>
+        <p class="text-slate-400 text-sm mb-4">
+          Pesanan tersimpan di <strong class="text-white">Google Sheet</strong> setelah API terhubung.<br/>
+          Di bawah ini adalah pesanan yang ada di <code class="text-orange-400">localStorage</code> browser (untuk demo).
+        </p>
+        <div id="daftar-pesanan-lokal" class="space-y-3">
+          <!-- diisi JS -->
+        </div>
+        <button class="btn-sec mt-4 text-sm" id="btn-hapus-pesanan-lokal">🗑️ Hapus Semua Pesanan Lokal</button>
+      </div>
+    </div>
+
+    <!-- ─── TAB: PENGATURAN ─── -->
+    <div id="tab-pengaturan" class="tab-konten hidden">
+      <div class="grid sm:grid-cols-2 gap-5">
+
+        <!-- Ubah Password -->
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-5">
+          <h2 class="text-white font-bold mb-4">🔐 Ubah Password Admin</h2>
+          <div class="space-y-3">
+            <div>
+              <label class="text-slate-400 text-sm block mb-1">Password Baru</label>
+              <input type="password" id="pass-baru" class="input-a" placeholder="Minimal 6 karakter"/>
+            </div>
+            <div>
+              <label class="text-slate-400 text-sm block mb-1">Konfirmasi Password</label>
+              <input type="password" id="pass-konfirm" class="input-a" placeholder="Ulangi password baru"/>
+            </div>
+            <button class="btn-pri w-full" id="btn-ubah-pass">💾 Simpan Password</button>
+          </div>
+        </div>
+
+        <!-- Konfigurasi Toko -->
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-5">
+          <h2 class="text-white font-bold mb-4">🏪 Konfigurasi Toko</h2>
+          <p class="text-slate-400 text-xs mb-3">Edit di file <code class="text-orange-400">js/api.js</code> bagian CONFIG untuk mengubah:</p>
+          <ul class="space-y-2 text-sm">
+            <li class="flex items-center gap-2">
+              <span class="text-green-400">✅</span>
+              <span class="text-slate-300">URL Google Apps Script</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-green-400">✅</span>
+              <span class="text-slate-300">Nomor WhatsApp Admin</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-green-400">✅</span>
+              <span class="text-slate-300">Nomor & Nama DANA</span>
+            </li>
+            <li class="flex items-center gap-2">
+              <span class="text-green-400">✅</span>
+              <span class="text-slate-300">Gambar QRIS (assets/img/qris.png)</span>
+            </li>
+          </ul>
+        </div>
+
+        <!-- Manajemen Data -->
+        <div class="bg-slate-800 border border-slate-700 rounded-2xl p-5 sm:col-span-2">
+          <h2 class="text-white font-bold mb-4">💾 Manajemen Data</h2>
+          <div class="flex flex-wrap gap-3">
+            <button class="btn-sec text-sm" id="btn-reset-default">🔄 Reset ke Data Default</button>
+            <button class="btn-sec text-sm" id="btn-export-2">📤 Backup Data Produk</button>
+          </div>
+          <p class="text-slate-500 text-xs mt-3">
+            ⚠️ Data produk tersimpan di localStorage browser ini. Jika browser di-clear data, produk kembali ke default.<br/>
+            Gunakan tombol Backup untuk menyimpan data sebelum clear browser.
+          </p>
+        </div>
+
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ══════════════════════════════════════════════════════════
+     MODAL FORM PRODUK (Tambah/Edit)
+══════════════════════════════════════════════════════════ -->
+<div id="modal-form-produk" class="hidden fixed inset-0 z-50 bg-black/70 backdrop-blur-sm flex items-end sm:items-center justify-center p-4">
+  <div class="bg-slate-900 w-full max-w-2xl rounded-2xl max-h-[95vh] overflow-y-auto border border-slate-700">
+
+    <!-- Modal Header -->
+    <div class="flex items-center justify-between px-5 py-4 border-b border-slate-700 sticky top-0 bg-slate-900 z-10">
+      <h2 class="text-white font-bold text-lg" id="modal-judul">Tambah Produk Baru</h2>
+      <button id="btn-tutup-modal-form" class="text-slate-400 hover:text-white p-1">✕</button>
+    </div>
+
+    <form id="form-produk" class="px-5 py-5 space-y-4">
+
+      <!-- Row 1: Nama & Kategori -->
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label class="text-slate-400 text-sm block mb-1">Nama Produk <span class="text-red-400">*</span></label>
+          <input type="text" id="f-nama" class="input-a" placeholder="cth: Free Fire" maxlength="60" required/>
+        </div>
+        <div>
+          <label class="text-slate-400 text-sm block mb-1">Kategori <span class="text-red-400">*</span></label>
+          <input type="text" id="f-kategori" class="input-a" placeholder="cth: Top Up Game" list="list-kategori" maxlength="40" required/>
+          <datalist id="list-kategori">
+            <option value="Akun Premium"/>
+            <option value="Top Up Game"/>
+            <option value="PPOB"/>
+            <option value="Paket Data"/>
+            <option value="Jasa Digital"/>
+          </datalist>
+        </div>
+      </div>
+
+      <!-- Row 2: Varian & Harga -->
+      <div class="grid sm:grid-cols-2 gap-4">
+        <div>
+          <label class="text-slate-400 text-sm block mb-1">Varian / Nominal <span class="text-red-400">*</span></label>
+          <input type="text" id="f-varian" class="input-a" placeholder="cth: 70 Diamond / Rp 25.000" maxlength="50" required/>
+        </div>
+        <div>
+          <label class="text-slate-400 text-sm block mb-1">Harga (Rupiah) <span class="text-red-400">*</span></label>
+          <input type="number" id="f-harga" class="input-a" placeholder="cth: 11000 (0 = Via Admin)" min="0" max="99999999"/>
+          <p class="text-slate-500 text-xs mt-1">Isi 0 jika harga via negosiasi admin</p>
+        </div>
+      </div>
+
+      <!-- Deskripsi -->
+      <div>
+        <label class="text-slate-400 text-sm block mb-1">Deskripsi Produk</label>
+        <textarea id="f-deskripsi" class="input-a min-h-[70px] resize-none" placeholder="Jelaskan keunggulan produk ini..." maxlength="400"></textarea>
+      </div>
+
+      <!-- ═══ MANAJER GAMBAR PRODUK ═══ -->
+      <div>
+        <label class="text-slate-400 text-sm block mb-2">🖼️ Gambar Produk</label>
+
+        <!-- Preview besar -->
+        <div class="relative mb-3">
+          <div class="w-full h-36 rounded-xl overflow-hidden bg-slate-950 border-2 border-dashed border-slate-600 flex items-center justify-center" id="preview-gambar-wrap">
+            <img id="preview-gambar" src="" alt="Preview Gambar" class="w-full h-full object-cover hidden"/>
+            <div id="preview-placeholder" class="text-center text-slate-600">
+              <div class="text-4xl mb-1">🖼️</div>
+              <p class="text-xs">Belum ada gambar</p>
+            </div>
+          </div>
+          <button type="button" id="btn-hapus-gambar" class="hidden absolute top-2 right-2 bg-red-600 text-white rounded-full w-7 h-7 flex items-center justify-center text-sm hover:bg-red-500" title="Hapus gambar">✕</button>
+        </div>
+
+        <!-- Input tersembunyi (nilai disimpan ke data produk) -->
+        <input type="text" id="f-gambar" class="hidden"/>
+
+        <!-- 3 Cara set gambar -->
+        <div class="grid grid-cols-3 gap-2 mb-3">
+          <label class="flex flex-col items-center gap-1.5 p-3 bg-slate-800 border border-slate-700 rounded-xl cursor-pointer hover:border-orange-500 transition-colors text-center">
+            <span class="text-2xl">📁</span>
+            <span class="text-slate-300 text-xs font-medium">Upload File</span>
+            <span class="text-slate-500 text-xs">dari HP/Komputer</span>
+            <input type="file" id="upload-gambar" accept="image/*" class="hidden"/>
+          </label>
+          <button type="button" id="btn-url-gambar" class="flex flex-col items-center gap-1.5 p-3 bg-slate-800 border border-slate-700 rounded-xl hover:border-orange-500 transition-colors text-center">
+            <span class="text-2xl">🔗</span>
+            <span class="text-slate-300 text-xs font-medium">Tempel URL</span>
+            <span class="text-slate-500 text-xs">dari internet</span>
+          </button>
+          <button type="button" id="btn-pilih-ada" class="flex flex-col items-center gap-1.5 p-3 bg-slate-800 border border-slate-700 rounded-xl hover:border-orange-500 transition-colors text-center">
+            <span class="text-2xl">🗂️</span>
+            <span class="text-slate-300 text-xs font-medium">Pilih Ada</span>
+            <span class="text-slate-500 text-xs">gambar lama</span>
+          </button>
+        </div>
+
+        <!-- Panel URL -->
+        <div id="panel-url-gambar" class="hidden bg-slate-950 border border-slate-700 rounded-xl p-3 mb-2">
+          <label class="text-slate-400 text-xs block mb-1">Paste URL gambar dari internet:</label>
+          <div class="flex gap-2">
+            <input type="url" id="input-url-gambar" class="input-a flex-1 text-sm py-2" placeholder="https://example.com/gambar.jpg"/>
+            <button type="button" id="btn-set-url-gambar" class="btn-pri text-sm px-4 py-2 flex-shrink-0">Set</button>
+          </div>
+        </div>
+
+        <!-- Panel Pilih Gambar Ada -->
+        <div id="panel-pilih-ada" class="hidden bg-slate-950 border border-slate-700 rounded-xl p-3 mb-2">
+          <p class="text-slate-400 text-xs mb-2">Pilih dari gambar yang sudah ada:</p>
+          <div class="grid grid-cols-4 gap-2" id="grid-gambar-ada">
+            <!-- diisi JS -->
+          </div>
+        </div>
+
+        <p class="text-slate-600 text-xs">💡 Ukuran ideal: <strong class="text-slate-500">400×400 px</strong>. Format: JPG, PNG, WebP, atau SVG.</p>
+      </div>
+      </div>
+
+      <!-- Langkah Pakai (Stepper Editor) -->
+      <div>
+        <div class="flex items-center justify-between mb-2">
+          <label class="text-slate-400 text-sm">📋 Cara Menggunakan (Langkah-langkah) <span class="text-red-400">*</span></label>
+          <button type="button" class="text-orange-400 text-xs hover:text-orange-300" id="btn-tambah-langkah">+ Tambah Langkah</button>
+        </div>
+        <div id="container-langkah" class="space-y-2 mb-2">
+          <!-- diisi JS -->
+        </div>
+        <p class="text-slate-600 text-xs">💡 Drag 3 garis untuk mengubah urutan. Klik ✕ untuk hapus langkah.</p>
+      </div>
+
+      <!-- Field Input Dinamis -->
+      <div>
+        <label class="text-slate-400 text-sm block mb-1">📝 Field Input Pembeli</label>
+        <input type="text" id="f-field-input" class="input-a" placeholder="cth: User ID Free Fire|Server" maxlength="200"/>
+        <p class="text-slate-500 text-xs mt-1">Pisahkan beberapa field dengan tanda <code class="text-orange-400">|</code> (pipe). cth: <code class="text-orange-400">User ID|Server ID</code></p>
+      </div>
+
+      <!-- Badge & Stok -->
+      <div class="grid sm:grid-cols-3 gap-4">
+        <div>
+          <label class="text-slate-400 text-sm block mb-1">Badge</label>
+          <select id="f-badge" class="input-a">
+            <option value="">Tidak ada</option>
+            <option value="Terlaris">🔥 Terlaris</option>
+            <option value="Promo">✨ Promo</option>
+          </select>
+        </div>
+        <div>
+          <label class="text-slate-400 text-sm block mb-1">Stok <span class="text-red-400">*</span></label>
+          <input type="number" id="f-stok" class="input-a" placeholder="cth: 999" min="0" max="9999"/>
+          <p class="text-slate-500 text-xs mt-1">0 = kosong/habis</p>
+        </div>
+        <div>
+          <label class="text-slate-400 text-sm block mb-1">Status</label>
+          <select id="f-status" class="input-a">
+            <option value="true">✅ Aktif (Tampil)</option>
+            <option value="false">⛔ Nonaktif (Disembunyikan)</option>
+          </select>
+        </div>
+      </div>
+
+      <!-- Tombol Simpan -->
+      <div class="flex gap-3 pt-2 border-t border-slate-700">
+        <button type="submit" class="btn-pri flex-1 py-3">💾 Simpan Produk</button>
+        <button type="button" class="btn-sec px-5" id="btn-batal-form">Batal</button>
+      </div>
+
+    </form>
+  </div>
+</div>
+
+<!-- Toast notifikasi -->
+<div id="toast" class="hidden"></div>
+
+<!-- Scripts -->
+<script src="js/api.js"></script>
+<script src="js/utils.js"></script>
+<script src="js/admin-data.js"></script>
+<script>
+// ══════════════════════════════════════════════════════════════
+// INISIALISASI
+// ══════════════════════════════════════════════════════════════
+(function() {
+  // Inisialisasi data default
+  const defaultProduk = window.BigbozAPI ? window.BigbozAPI.fetchProducts().then ? null : [] : [];
+  // Gunakan data mock langsung
+  const mockProduk = getMockProductsForAdmin();
+  BigbozAdmin.inisialisasi(mockProduk);
+
+  // Cek sesi login
+  if (BigbozAdmin.cekLogin()) {
+    tampilkanPanel();
+  }
+
+  // Event: Login
+  document.getElementById('btn-login').addEventListener('click', proseLogin);
+  document.getElementById('input-pass').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') proseLogin();
+  });
+
+  function proseLogin() {
+    const pass = document.getElementById('input-pass').value;
+    const ok = BigbozAdmin.login(pass);
+    if (ok) {
+      tampilkanPanel();
+    } else {
+      document.getElementById('error-login').classList.remove('hidden');
+      document.getElementById('input-pass').value = '';
+      document.getElementById('input-pass').focus();
+    }
+  }
+
+  function tampilkanPanel() {
+    document.getElementById('layar-login').classList.add('hidden');
+    document.getElementById('panel-admin').classList.remove('hidden');
+    renderSemuaProduk();
+    renderStats();
+    renderPesananLokal();
+    initTabNav();
+    initFormProduk();
+    initPengaturan();
+  }
+})();
+
+// Data produk default untuk admin (tanpa async)
+function getMockProductsForAdmin() {
+  return [
+    { id:'1', kategori:'Akun Premium', nama:'Gemini Pro', varian:'18 Bulan', harga:30000, deskripsi:'Akun Gemini Pro original 18 bulan.', langkah_pakai:'Kirim pesanan via WhatsApp|Admin kirim akun dalam 1x24 jam|Login pakai akun yang dikirim|Jangan ubah email/password|Nikmati 18 bulan', field_input:'Email Kamu', badge:'Terlaris', stok:10, gambar:'assets/img/prod_gemini_pro.jpg', status_aktif:'true' },
+    { id:'2', kategori:'Top Up Game', nama:'Free Fire', varian:'70 Diamond', harga:11000, deskripsi:'Top Up Diamond FF cepat.', langkah_pakai:'Masukkan User ID FF|Bayar sesuai harga|Admin proses 5-15 menit|Diamond masuk akun', field_input:'User ID Free Fire|Server', badge:'Promo', stok:999, gambar:'assets/img/prod_free_fire.jpg', status_aktif:'true' },
+    { id:'3', kategori:'Top Up Game', nama:'Free Fire', varian:'140 Diamond', harga:21000, deskripsi:'Top Up Diamond FF cepat.', langkah_pakai:'Masukkan User ID FF|Bayar sesuai harga|Admin proses 5-15 menit|Diamond masuk akun', field_input:'User ID Free Fire|Server', badge:'', stok:999, gambar:'assets/img/prod_free_fire.jpg', status_aktif:'true' },
+    { id:'4', kategori:'Top Up Game', nama:'Mobile Legends', varian:'86 Diamond', harga:20000, deskripsi:'Top Up Diamond ML resmi.', langkah_pakai:'Siapkan User ID & Server ID|Isi di form|Lakukan pembayaran|Diamond masuk 5-30 menit', field_input:'User ID Mobile Legends|Server ID', badge:'', stok:999, gambar:'assets/img/prod_mobile_legends.jpg', status_aktif:'true' },
+    { id:'5', kategori:'Top Up Game', nama:'Mobile Legends', varian:'172 Diamond', harga:39000, deskripsi:'Top Up Diamond ML resmi.', langkah_pakai:'Siapkan User ID & Server ID|Isi di form|Lakukan pembayaran|Diamond masuk 5-30 menit', field_input:'User ID Mobile Legends|Server ID', badge:'Terlaris', stok:999, gambar:'assets/img/prod_mobile_legends.jpg', status_aktif:'true' },
+    { id:'6', kategori:'PPOB', nama:'Token Listrik PLN', varian:'Rp 25.000', harga:26500, deskripsi:'Token PLN via WA.', langkah_pakai:'Masukkan nomor meter PLN|Bayar|Admin kirim token ke WA|Masukkan ke meteran', field_input:'Nomor Meter PLN (11-13 digit)', badge:'', stok:999, gambar:'assets/img/prod_token_pln.svg', status_aktif:'true' },
+    { id:'7', kategori:'PPOB', nama:'Token Listrik PLN', varian:'Rp 50.000', harga:51500, deskripsi:'Token PLN via WA.', langkah_pakai:'Masukkan nomor meter PLN|Bayar|Admin kirim token ke WA|Masukkan ke meteran', field_input:'Nomor Meter PLN (11-13 digit)', badge:'', stok:999, gambar:'assets/img/prod_token_pln.svg', status_aktif:'true' },
+    { id:'8', kategori:'PPOB', nama:'Pulsa', varian:'Rp 10.000', harga:11500, deskripsi:'Isi pulsa semua operator.', langkah_pakai:'Masukkan nomor HP tujuan|Bayar|Pulsa terkirim 1-5 menit', field_input:'Nomor HP Tujuan', badge:'', stok:999, gambar:'assets/img/prod_pulsa.svg', status_aktif:'true' },
+    { id:'9', kategori:'Paket Data', nama:'VPN Premium', varian:'1 Bulan', harga:15000, deskripsi:'VPN aman & bebas blokir.', langkah_pakai:'Pesan & bayar|Admin kirim akun VPN|Download app VPN|Masukkan akun|Internet aman 1 bulan', field_input:'Email Kamu', badge:'', stok:50, gambar:'assets/img/prod_vpn.svg', status_aktif:'true' },
+    { id:'10', kategori:'Jasa Digital', nama:'Pembuatan Website', varian:'Paket Basic', harga:0, deskripsi:'Website profesional mulai Rp 350.000.', langkah_pakai:'Hubungi admin WA|Admin beri penawaran|Setuju, DP 50%|Admin kerjakan|Revisi|Website aktif', field_input:'Brief Kebutuhan Website', badge:'', stok:5, gambar:'assets/img/prod_website.svg', status_aktif:'true' },
+    { id:'11', kategori:'Jasa Digital', nama:'Joki Tugas', varian:'Sesuai Kebutuhan', harga:0, deskripsi:'Jasa tugas kuliah, harga nego.', langkah_pakai:'Kirim brief ke admin WA|Admin beri estimasi|Setuju, bayar DP|Admin kerjakan|Revisi|Tugas selesai', field_input:'Deskripsi Tugas|Deadline', badge:'', stok:10, gambar:'assets/img/prod_joki.svg', status_aktif:'true' },
+  ];
+}
+
+// ══════════════════════════════════════════════════════════════
+// RENDER PRODUK ADMIN
+// ══════════════════════════════════════════════════════════════
+let filterKatAdmin = 'Semua';
+let cariAdmin = '';
+
+function renderSemuaProduk() {
+  const semua = BigbozAdmin.getProduk() || [];
+  renderFilterKategori(semua);
+  renderGridAdmin(semua);
+}
+
+function renderFilterKategori(produk) {
+  const kats = ['Semua', ...new Set(produk.map(p => p.kategori))];
+  const el = document.getElementById('admin-filter-kat');
+  el.innerHTML = kats.map(k => `
+    <button class="text-xs px-3 py-1.5 rounded-full font-medium transition-all border ${k === filterKatAdmin ? 'bg-orange-500 text-white border-orange-500' : 'bg-slate-800 text-slate-400 border-slate-700 hover:border-orange-400'}"
+      onclick="filterAdminKat('${k}')">${k}</button>
+  `).join('');
+}
+
+function filterAdminKat(kat) {
+  filterKatAdmin = kat;
+  renderSemuaProduk();
+}
+
+function renderGridAdmin(produk) {
+  let hasil = produk;
+  if (filterKatAdmin !== 'Semua') hasil = hasil.filter(p => p.kategori === filterKatAdmin);
+  if (cariAdmin) hasil = hasil.filter(p => (p.nama+p.varian+p.kategori).toLowerCase().includes(cariAdmin));
+
+  const el = document.getElementById('grid-admin-produk');
+  if (hasil.length === 0) {
+    el.innerHTML = `<div class="text-center py-8 text-slate-500">Tidak ada produk ditemukan</div>`;
+    return;
+  }
+
+  el.innerHTML = hasil.map(p => {
+    const stokHabis = Number(p.stok) === 0;
+    const hargaStr = p.harga > 0 ? 'Rp ' + Number(p.harga).toLocaleString('id-ID') : 'Via Admin';
+    const nonaktif = p.status_aktif === 'false' || p.status_aktif === false;
+    return `
+      <div class="card-produk flex gap-3 items-start ${nonaktif ? 'opacity-50' : ''}">
+        <!-- Gambar kecil -->
+        <img src="${p.gambar || ''}" alt="${p.nama}" class="w-14 h-14 rounded-xl object-cover bg-slate-900 flex-shrink-0 border border-slate-700"
+          onerror="this.src='data:image/svg+xml,<svg xmlns=\\'http://www.w3.org/2000/svg\\' viewBox=\\'0 0 40 40\\'><rect width=\\'40\\' height=\\'40\\' fill=\\'%231e293b\\'/><text x=\\'20\\' y=\\'26\\' text-anchor=\\'middle\\' font-size=\\'18\\'>🎮</text></svg>'"/>
+        <!-- Info -->
+        <div class="flex-1 min-w-0">
+          <div class="flex items-start justify-between gap-2">
+            <div>
+              <span class="text-orange-400 text-xs">${p.kategori}</span>
+              <h3 class="text-white font-semibold text-sm">${p.nama} <span class="text-slate-400 font-normal">— ${p.varian}</span></h3>
+              <p class="text-white font-bold">${hargaStr}
+                ${p.badge ? `<span class="ml-2 text-xs bg-orange-500/20 text-orange-400 px-1.5 py-0.5 rounded-full">${p.badge}</span>` : ''}
+                ${nonaktif ? `<span class="ml-2 text-xs bg-slate-700 text-slate-400 px-1.5 py-0.5 rounded-full">Nonaktif</span>` : ''}
+              </p>
+            </div>
+            <!-- Status Stok Toggle -->
+            <div class="flex-shrink-0 text-right">
+              <button onclick="toggleStokAdmin('${p.id}')"
+                class="text-xs font-bold px-3 py-1 rounded-full border transition-all ${stokHabis ? 'bg-red-900/50 text-red-400 border-red-700 hover:bg-red-800/50' : 'bg-green-900/50 text-green-400 border-green-700 hover:bg-green-800/50'}">
+                ${stokHabis ? '❌ Kosong' : '✅ Ready'}
+              </button>
+              <p class="text-slate-500 text-xs mt-0.5">Stok: ${p.stok}</p>
+            </div>
+          </div>
+          <!-- Aksi -->
+          <div class="flex gap-2 mt-2 flex-wrap">
+            <button onclick="bukaFormEdit('${p.id}')" class="text-xs bg-slate-700 hover:bg-slate-600 text-slate-300 px-3 py-1 rounded-lg transition">✏️ Edit</button>
+            <button onclick="hapusProdukAdmin('${p.id}', '${p.nama}')" class="text-xs bg-red-900/40 hover:bg-red-800/60 text-red-400 px-3 py-1 rounded-lg transition">🗑️ Hapus</button>
+            <button onclick="toggleAktif('${p.id}')" class="text-xs bg-slate-700 hover:bg-slate-600 text-slate-400 px-3 py-1 rounded-lg transition">
+              ${nonaktif ? '👁️ Aktifkan' : '🚫 Nonaktifkan'}
+            </button>
+          </div>
+        </div>
+      </div>
+    `;
+  }).join('');
+}
+
+// Toggle stok Ready/Kosong
+function toggleStokAdmin(id) {
+  const stokBaru = BigbozAdmin.toggleStok(id);
+  toast(stokBaru === 0 ? '❌ Stok diset KOSONG' : '✅ Stok diset READY', stokBaru === 0 ? 'error' : 'sukses');
+  renderSemuaProduk();
+  renderStats();
+}
+
+// Toggle aktif/nonaktif
+function toggleAktif(id) {
+  const p = BigbozAdmin.getProdukById(id);
+  if (!p) return;
+  const nonaktif = p.status_aktif === 'false' || p.status_aktif === false;
+  BigbozAdmin.updateProduk(id, { status_aktif: nonaktif ? 'true' : 'false' });
+  toast(nonaktif ? '✅ Produk diaktifkan' : '🚫 Produk dinonaktifkan', 'info');
+  renderSemuaProduk();
+}
+
+// Hapus produk
+function hapusProdukAdmin(id, nama) {
+  if (!confirm(`Yakin hapus produk "${nama}"? Tindakan ini tidak bisa dibatalkan.`)) return;
+  BigbozAdmin.hapusProduk(id);
+  toast('🗑️ Produk dihapus', 'error');
+  renderSemuaProduk();
+  renderStats();
+}
+
+// ══════════════════════════════════════════════════════════════
+// STATS BAR
+// ══════════════════════════════════════════════════════════════
+function renderStats() {
+  const semua = BigbozAdmin.getProduk() || [];
+  const ready = semua.filter(p => Number(p.stok) > 0).length;
+  const kosong = semua.filter(p => Number(p.stok) === 0).length;
+  const aktif = semua.filter(p => p.status_aktif !== 'false' && p.status_aktif !== false).length;
+
+  document.getElementById('stats-bar').innerHTML = `
+    <div class="bg-slate-800 border border-slate-700 rounded-xl p-4 text-center">
+      <p class="text-3xl font-extrabold text-white">${semua.length}</p>
+      <p class="text-slate-400 text-xs mt-1">Total Produk</p>
+    </div>
+    <div class="bg-slate-800 border border-green-700/50 rounded-xl p-4 text-center">
+      <p class="text-3xl font-extrabold text-green-400">${ready}</p>
+      <p class="text-slate-400 text-xs mt-1">✅ Ready</p>
+    </div>
+    <div class="bg-slate-800 border border-red-700/50 rounded-xl p-4 text-center">
+      <p class="text-3xl font-extrabold text-red-400">${kosong}</p>
+      <p class="text-slate-400 text-xs mt-1">❌ Kosong</p>
+    </div>
+    <div class="bg-slate-800 border border-orange-700/50 rounded-xl p-4 text-center">
+      <p class="text-3xl font-extrabold text-orange-400">${aktif}</p>
+      <p class="text-slate-400 text-xs mt-1">👁️ Aktif</p>
+    </div>
+  `;
+}
+
+// ══════════════════════════════════════════════════════════════
+// FORM PRODUK (Tambah/Edit)
+// ══════════════════════════════════════════════════════════════
+let editingId = null;
+
+// Gambar bawaan yang tersedia di folder assets/img
+const GAMBAR_TERSEDIA = [
+  { label: 'Gemini Pro', path: 'assets/img/prod_gemini_pro.jpg' },
+  { label: 'Free Fire', path: 'assets/img/prod_free_fire.jpg' },
+  { label: 'Mobile Legends', path: 'assets/img/prod_mobile_legends.jpg' },
+  { label: 'Token PLN', path: 'assets/img/prod_token_pln.svg' },
+  { label: 'Pulsa', path: 'assets/img/prod_pulsa.svg' },
+  { label: 'VPN', path: 'assets/img/prod_vpn.svg' },
+  { label: 'Website', path: 'assets/img/prod_website.svg' },
+  { label: 'Joki Tugas', path: 'assets/img/prod_joki.svg' },
+];
+
+function initFormProduk() {
+  document.getElementById('btn-tambah-produk').addEventListener('click', () => bukaFormTambah());
+  document.getElementById('btn-tutup-modal-form').addEventListener('click', tutupFormModal);
+  document.getElementById('btn-batal-form').addEventListener('click', tutupFormModal);
+  document.getElementById('modal-form-produk').addEventListener('click', (e) => {
+    if (e.target === document.getElementById('modal-form-produk')) tutupFormModal();
+  });
+  document.getElementById('btn-tambah-langkah').addEventListener('click', tambahLangkahBaru);
+  document.getElementById('form-produk').addEventListener('submit', simpanFormProduk);
+
+  // ── Manajer Gambar ──────────────────────────────────────────
+
+  // 1. Upload dari file (konversi ke Base64)
+  document.getElementById('upload-gambar').addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    if (file.size > 2 * 1024 * 1024) {
+      toast('❌ Ukuran gambar maksimal 2MB', 'error'); return;
+    }
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      setGambarPreview(ev.target.result); // simpan data:image/...;base64,...
+      toast('✅ Gambar berhasil diupload!', 'sukses');
+    };
+    reader.readAsDataURL(file);
+    e.target.value = '';
+  });
+
+  // 2. Tempel URL
+  document.getElementById('btn-url-gambar').addEventListener('click', () => {
+    document.getElementById('panel-url-gambar').classList.toggle('hidden');
+    document.getElementById('panel-pilih-ada').classList.add('hidden');
+  });
+  document.getElementById('btn-set-url-gambar').addEventListener('click', () => {
+    const url = document.getElementById('input-url-gambar').value.trim();
+    if (!url) { toast('❌ URL kosong', 'error'); return; }
+    setGambarPreview(url);
+    document.getElementById('panel-url-gambar').classList.add('hidden');
+    toast('✅ URL gambar disimpan', 'sukses');
+  });
+  document.getElementById('input-url-gambar').addEventListener('keydown', (e) => {
+    if (e.key === 'Enter') { e.preventDefault(); document.getElementById('btn-set-url-gambar').click(); }
+  });
+
+  // 3. Pilih gambar yang sudah ada
+  document.getElementById('btn-pilih-ada').addEventListener('click', () => {
+    const panel = document.getElementById('panel-pilih-ada');
+    panel.classList.toggle('hidden');
+    document.getElementById('panel-url-gambar').classList.add('hidden');
+    // Render grid gambar tersedia
+    document.getElementById('grid-gambar-ada').innerHTML = GAMBAR_TERSEDIA.map(g => `
+      <button type="button" onclick="setGambarPreview('${g.path}'); document.getElementById('panel-pilih-ada').classList.add('hidden'); toast('✅ Gambar dipilih', 'sukses')"
+        class="flex flex-col items-center gap-1 p-1 rounded-lg hover:bg-slate-700 transition-colors" title="${g.label}">
+        <img src="${g.path}" alt="${g.label}" class="w-12 h-12 rounded-lg object-cover bg-slate-800 border border-slate-700"
+          onerror="this.src='data:image/svg+xml,<svg xmlns=\\'http://www.w3.org/2000/svg\\' viewBox=\\'0 0 40 40\\'><rect width=\\'40\\' height=\\'40\\' fill=\\'%231e293b\\'/><text x=\\'20\\' y=\\'26\\' text-anchor=\\'middle\\' font-size=\\'18\\'>🎮</text></svg>'"/>
+        <span class="text-slate-500 text-xs truncate w-full text-center">${g.label}</span>
+      </button>
+    `).join('');
+  });
+
+  // Hapus gambar
+  document.getElementById('btn-hapus-gambar').addEventListener('click', () => {
+    setGambarPreview('');
+    toast('🗑️ Gambar dihapus', 'info');
+  });
+
+  // Search
+  document.getElementById('admin-search').addEventListener('input', (e) => {
+    cariAdmin = e.target.value.trim().toLowerCase();
+    renderGridAdmin(BigbozAdmin.getProduk() || []);
+  });
+
+  // Export & import
+  document.getElementById('btn-export').addEventListener('click', () => BigbozAdmin.exportJSON());
+  document.getElementById('input-import').addEventListener('change', (e) => {
+    const file = e.target.files[0];
+    if (!file) return;
+    const reader = new FileReader();
+    reader.onload = (ev) => {
+      try {
+        const n = BigbozAdmin.importJSON(ev.target.result);
+        toast(`✅ ${n} produk berhasil diimport`, 'sukses');
+        renderSemuaProduk(); renderStats();
+      } catch {
+        toast('❌ Format file JSON tidak valid', 'error');
+      }
+    };
+    reader.readAsText(file);
+    e.target.value = '';
+  });
+}
+
+/**
+ * Set gambar preview & simpan ke f-gambar tersembunyi
+ */
+function setGambarPreview(src) {
+  const inputGambar = document.getElementById('f-gambar');
+  const prev = document.getElementById('preview-gambar');
+  const placeholder = document.getElementById('preview-placeholder');
+  const btnHapus = document.getElementById('btn-hapus-gambar');
+
+  if (!src) {
+    inputGambar.value = '';
+    prev.src = '';
+    prev.classList.add('hidden');
+    placeholder?.classList.remove('hidden');
+    btnHapus?.classList.add('hidden');
+    return;
+  }
+
+  inputGambar.value = src;
+  prev.src = src;
+  prev.classList.remove('hidden');
+  placeholder?.classList.add('hidden');
+  btnHapus?.classList.remove('hidden');
+
+  // Error handling jika gambar gagal load
+  prev.onerror = () => {
+    toast('⚠️ Gagal memuat gambar. Cek URL atau file.', 'error');
+    prev.src = '';
+    prev.classList.add('hidden');
+    placeholder?.classList.remove('hidden');
+  };
+}
+
+function bukaFormTambah() {
+  editingId = null;
+  document.getElementById('modal-judul').textContent = '➕ Tambah Produk Baru';
+  resetForm();
+  setLangkahList(['Langkah pertama...', 'Langkah kedua...', 'Langkah ketiga...']);
+  document.getElementById('f-stok').value = '999';
+  document.getElementById('modal-form-produk').classList.remove('hidden');
+}
+
+function bukaFormEdit(id) {
+  const p = BigbozAdmin.getProdukById(id);
+  if (!p) return;
+  editingId = id;
+  document.getElementById('modal-judul').textContent = '✏️ Edit Produk';
+  document.getElementById('f-nama').value = p.nama || '';
+  document.getElementById('f-kategori').value = p.kategori || '';
+  document.getElementById('f-varian').value = p.varian || '';
+  document.getElementById('f-harga').value = p.harga || 0;
+  document.getElementById('f-deskripsi').value = p.deskripsi || '';
+  document.getElementById('f-field-input').value = p.field_input || '';
+  document.getElementById('f-badge').value = p.badge || '';
+  document.getElementById('f-stok').value = p.stok || 0;
+  document.getElementById('f-status').value = (p.status_aktif === 'false' || p.status_aktif === false) ? 'false' : 'true';
+  // Langkah-langkah
+  const langkahArr = (p.langkah_pakai || '').split('|').filter(Boolean);
+  setLangkahList(langkahArr.length > 0 ? langkahArr : ['Langkah pertama...']);
+  // Gambar — gunakan setGambarPreview agar UI konsisten
+  setGambarPreview(p.gambar || '');
+  document.getElementById('modal-form-produk').classList.remove('hidden');
+  document.getElementById('modal-form-produk').querySelector('.overflow-y-auto').scrollTop = 0;
+}
+
+function tutupFormModal() {
+  document.getElementById('modal-form-produk').classList.add('hidden');
+  editingId = null;
+}
+
+function resetForm() {
+  document.getElementById('form-produk').reset();
+  setGambarPreview(''); // reset gambar & preview
+  document.getElementById('container-langkah').innerHTML = '';
+  // Tutup semua panel
+  document.getElementById('panel-url-gambar')?.classList.add('hidden');
+  document.getElementById('panel-pilih-ada')?.classList.add('hidden');
+}
+
+function simpanFormProduk(e) {
+  e.preventDefault();
+  const langkahItems = document.querySelectorAll('.langkah-input');
+  const langkahArr = Array.from(langkahItems).map(el => el.value.trim()).filter(Boolean);
+
+  const data = {
+    nama: document.getElementById('f-nama').value.trim(),
+    kategori: document.getElementById('f-kategori').value.trim(),
+    varian: document.getElementById('f-varian').value.trim(),
+    harga: Number(document.getElementById('f-harga').value) || 0,
+    deskripsi: document.getElementById('f-deskripsi').value.trim(),
+    gambar: document.getElementById('f-gambar').value.trim(),
+    langkah_pakai: langkahArr.join('|'),
+    field_input: document.getElementById('f-field-input').value.trim(),
+    badge: document.getElementById('f-badge').value,
+    stok: Number(document.getElementById('f-stok').value) || 0,
+    status_aktif: document.getElementById('f-status').value,
+  };
+
+  // Validasi
+  if (!data.nama || !data.kategori || !data.varian) {
+    toast('❌ Nama, kategori, dan varian wajib diisi!', 'error'); return;
+  }
+  if (langkahArr.length === 0) {
+    toast('❌ Tambahkan minimal 1 langkah cara penggunaan!', 'error'); return;
+  }
+
+  if (editingId) {
+    BigbozAdmin.updateProduk(editingId, data);
+    toast('✅ Produk berhasil diupdate!', 'sukses');
+  } else {
+    BigbozAdmin.tambahProduk(data);
+    toast('✅ Produk baru berhasil ditambahkan!', 'sukses');
+  }
+  tutupFormModal();
+  renderSemuaProduk();
+  renderStats();
+}
+
+// ── Langkah-Langkah Editor ──────────────────────────────────
+
+function setLangkahList(arr) {
+  const container = document.getElementById('container-langkah');
+  container.innerHTML = '';
+  arr.forEach((teks, i) => tambahLangkahItem(teks, i + 1));
+}
+
+function tambahLangkahBaru() {
+  const container = document.getElementById('container-langkah');
+  const n = container.querySelectorAll('.step-item').length + 1;
+  tambahLangkahItem('', n);
+}
+
+function tambahLangkahItem(teks, nomor) {
+  const container = document.getElementById('container-langkah');
+  const div = document.createElement('div');
+  div.className = 'step-item';
+  div.draggable = true;
+  div.innerHTML = `
+    <span class="step-drag" title="Drag untuk ubah urutan">⠿</span>
+    <span class="text-orange-400 text-sm font-bold w-5 flex-shrink-0 langkah-nomor">${nomor}</span>
+    <input type="text" class="langkah-input flex-1 bg-transparent border-none outline-none text-slate-200 text-sm placeholder-slate-600" value="${teks.replace(/"/g,'&quot;')}" placeholder="Tulis langkah ${nomor}..."/>
+    <button type="button" class="text-slate-600 hover:text-red-400 text-lg" onclick="hapusLangkah(this)">✕</button>
+  `;
+  container.appendChild(div);
+  renomorLangkah();
+  initDragDrop();
+  // Fokus ke input baru
+  div.querySelector('input').focus();
+}
+
+function hapusLangkah(btn) {
+  btn.closest('.step-item').remove();
+  renomorLangkah();
+}
+
+function renomorLangkah() {
+  document.querySelectorAll('.langkah-nomor').forEach((el, i) => el.textContent = i + 1);
+  document.querySelectorAll('.langkah-input').forEach((el, i) => el.placeholder = `Tulis langkah ${i + 1}...`);
+}
+
+// ── Drag & Drop Langkah ──────────────────────────────────────
+let dragEl = null;
+function initDragDrop() {
+  const items = document.querySelectorAll('.step-item');
+  items.forEach(item => {
+    item.addEventListener('dragstart', () => { dragEl = item; item.style.opacity = '0.4'; });
+    item.addEventListener('dragend', () => { dragEl = null; item.style.opacity = '1'; renomorLangkah(); });
+    item.addEventListener('dragover', (e) => { e.preventDefault(); if (dragEl && dragEl !== item) item.before(dragEl); });
+  });
+}
+
+function previewGambar() {
+  const src = document.getElementById('f-gambar').value.trim();
+  if (!src) { toast('Masukkan path gambar dulu', 'info'); return; }
+  const prev = document.getElementById('preview-gambar');
+  prev.src = src;
+  prev.classList.remove('hidden');
+}
+
+// ══════════════════════════════════════════════════════════════
+// PESANAN LOKAL
+// ══════════════════════════════════════════════════════════════
+function renderPesananLokal() {
+  const pesanan = Utils.ambilLokal('pesanan_terakhir');
+  const el = document.getElementById('daftar-pesanan-lokal');
+  if (!pesanan) {
+    el.innerHTML = '<p class="text-slate-500 text-sm">Belum ada pesanan di localStorage.</p>';
+    return;
+  }
+  el.innerHTML = `
+    <div class="bg-slate-700/50 rounded-xl p-4 border border-slate-600">
+      <div class="flex justify-between items-start">
+        <div>
+          <p class="text-orange-400 font-bold">${pesanan.orderId}</p>
+          <p class="text-white text-sm">${pesanan.nama} — ${pesanan.produk} ${pesanan.varian}</p>
+          <p class="text-slate-400 text-xs">${pesanan.wa} · ${pesanan.metode}</p>
+          <p class="text-green-400 font-semibold text-sm">Rp ${Number(pesanan.total||0).toLocaleString('id-ID')}</p>
+        </div>
+        <span class="text-xs bg-yellow-900/50 text-yellow-400 border border-yellow-700 px-2 py-1 rounded-full">Menunggu Bayar</span>
+      </div>
+    </div>
+  `;
+  document.getElementById('btn-hapus-pesanan-lokal').addEventListener('click', () => {
+    Utils.hapusLokal('pesanan_terakhir');
+    renderPesananLokal();
+    toast('🗑️ Pesanan lokal dihapus', 'info');
+  });
+}
+
+// ══════════════════════════════════════════════════════════════
+// TAB NAVIGASI
+// ══════════════════════════════════════════════════════════════
+function initTabNav() {
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('tab-active'));
+      document.querySelectorAll('.tab-konten').forEach(c => c.classList.add('hidden'));
+      btn.classList.add('tab-active');
+      document.getElementById(`tab-${btn.dataset.tab}`).classList.remove('hidden');
+    });
+  });
+  document.getElementById('btn-logout').addEventListener('click', () => {
+    BigbozAdmin.logout();
+    location.reload();
+  });
+}
+
+// ══════════════════════════════════════════════════════════════
+// PENGATURAN
+// ══════════════════════════════════════════════════════════════
+function initPengaturan() {
+  document.getElementById('btn-ubah-pass').addEventListener('click', () => {
+    const baru = document.getElementById('pass-baru').value;
+    const konfirm = document.getElementById('pass-konfirm').value;
+    if (baru.length < 6) { toast('❌ Password minimal 6 karakter', 'error'); return; }
+    if (baru !== konfirm) { toast('❌ Password tidak cocok', 'error'); return; }
+    BigbozAdmin.ubahPassword(baru);
+    toast('✅ Password berhasil diubah!', 'sukses');
+    document.getElementById('pass-baru').value = '';
+    document.getElementById('pass-konfirm').value = '';
+  });
+  document.getElementById('btn-reset-default').addEventListener('click', () => {
+    if (!confirm('Reset semua produk ke data default? Perubahan yang ada akan hilang!')) return;
+    BigbozAdmin.simpanProduk(getMockProductsForAdmin());
+    toast('🔄 Data produk direset ke default', 'info');
+    renderSemuaProduk(); renderStats();
+  });
+  document.getElementById('btn-export-2').addEventListener('click', () => BigbozAdmin.exportJSON());
+}
+
+// ══════════════════════════════════════════════════════════════
+// TOAST
+// ══════════════════════════════════════════════════════════════
+function toast(pesan, tipe='info', durasi=3000) {
+  const el = document.getElementById('toast');
+  const warna = tipe==='sukses'?'bg-green-600':tipe==='error'?'bg-red-600':'bg-slate-700';
+  el.className = `fixed top-4 left-1/2 -translate-x-1/2 z-[9999] ${warna} text-white px-5 py-3 rounded-xl shadow-lg text-sm font-medium max-w-xs text-center`;
+  el.textContent = pesan;
+  el.classList.remove('hidden');
+  clearTimeout(el._timer);
+  el._timer = setTimeout(() => el.classList.add('hidden'), durasi);
+}
+</script>
+
+</body>
+</html>

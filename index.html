@@ -1,0 +1,1145 @@
+<!DOCTYPE html>
+<html class="dark" lang="id">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover" name="viewport"/>
+  <meta name="theme-color" content="#071324"/>
+  <meta name="description" content="BIGBOZ STORE — Solusi Akun Premium, Top Up Game, Token Listrik PLN, Pulsa, VPN, dan Jasa Digital Kilat 24 Jam."/>
+  <title>BIGBOZ STORE — Solusi Akun & Top-Up Anti Ribet</title>
+
+  <!-- Google Fonts & Material Symbols -->
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet"/>
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" rel="stylesheet"/>
+
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script id="tailwind-config">
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "background": "#071324",
+            "surface": "#071324",
+            "surface-container-lowest": "#030a14",
+            "surface-container-low": "#0b1a30",
+            "surface-container": "#112642",
+            "surface-container-high": "#193558",
+            "surface-container-highest": "#23456f",
+            "surface-bright": "#2e5687",
+            "outline": "#64748b",
+            "outline-variant": "#334155",
+            "primary": "#38bdf8",
+            "primary-container": "#0284c7",
+            "on-primary": "#031525",
+            "on-primary-container": "#e0f2fe",
+            "secondary": "#34d399",
+            "secondary-container": "#059669",
+            "on-secondary": "#022c1e",
+            "on-secondary-container": "#d1fae5",
+            "tertiary": "#22d3ee",
+            "tertiary-container": "#0891b2",
+            "on-surface": "#f1f5f9",
+            "on-surface-variant": "#94a3b8",
+            "inverse-surface": "#f1f5f9",
+            "error": "#f87171"
+          },
+          borderRadius: {
+            "DEFAULT": "0.25rem",
+            "lg": "0.5rem",
+            "xl": "0.75rem",
+            "2xl": "1rem",
+            "full": "9999px"
+          },
+          spacing: {
+            "space-xs": "0.25rem",
+            "space-sm": "0.5rem",
+            "space-md": "1rem",
+            "space-lg": "1.5rem",
+            "space-xl": "2rem",
+            "margin": "1rem",
+            "gutter": "0.75rem"
+          },
+          fontFamily: {
+            "sans": ["Plus Jakarta Sans", "sans-serif"],
+            "headline-md": ["Plus Jakarta Sans"],
+            "label-lg": ["Plus Jakarta Sans"],
+            "label-md": ["Plus Jakarta Sans"],
+            "label-sm": ["Plus Jakarta Sans"],
+            "body-sm": ["Plus Jakarta Sans"],
+            "headline-xl-mobile": ["Plus Jakarta Sans"],
+            "body-md": ["Plus Jakarta Sans"],
+            "headline-sm": ["Plus Jakarta Sans"],
+            "headline-lg": ["Plus Jakarta Sans"],
+            "body-lg": ["Plus Jakarta Sans"],
+            "headline-xl": ["Plus Jakarta Sans"]
+          },
+          fontSize: {
+            "headline-md": ["20px", { lineHeight: "28px", fontWeight: "700" }],
+            "label-lg": ["14px", { lineHeight: "20px", fontWeight: "700" }],
+            "label-md": ["12px", { lineHeight: "16px", fontWeight: "600" }],
+            "label-sm": ["10px", { lineHeight: "12px", fontWeight: "700" }],
+            "body-sm": ["12px", { lineHeight: "16px", fontWeight: "400" }],
+            "headline-xl-mobile": ["26px", { lineHeight: "32px", fontWeight: "800" }],
+            "body-md": ["14px", { lineHeight: "20px", fontWeight: "400" }],
+            "headline-sm": ["18px", { lineHeight: "24px", fontWeight: "600" }],
+            "headline-lg": ["24px", { lineHeight: "32px", fontWeight: "700" }],
+            "body-lg": ["16px", { lineHeight: "24px", fontWeight: "500" }],
+            "headline-xl": ["32px", { lineHeight: "40px", fontWeight: "800" }]
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    @layer base {
+      html, body {
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        background-color: #071324;
+        color: #d4e4fa;
+        -webkit-tap-highlight-color: transparent;
+        font-family: 'Plus Jakarta Sans', sans-serif;
+      }
+      body {
+        overscroll-behavior-y: none;
+        min-height: max(884px, 100dvh);
+      }
+      .pb-safe { padding-bottom: env(safe-area-inset-bottom, 0px); }
+      .pt-safe { padding-top: env(safe-area-inset-top, 0px); }
+      main > :first-child { margin-top: 0 !important; }
+      main > :last-child { margin-bottom: 0 !important; }
+    }
+    ::-webkit-scrollbar { display: none; }
+    .no-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+    .no-scrollbar::-webkit-scrollbar { display: none; }
+    .line-clamp-1 { display: -webkit-box; -webkit-line-clamp: 1; -webkit-box-orient: vertical; overflow: hidden; }
+  </style>
+</head>
+
+<body class="bg-surface font-body-md text-body-md text-on-surface min-h-screen flex flex-col items-center justify-start antialiased selection:bg-sky-500/30 selection:text-sky-200">
+
+  <!-- ══════════════════════════════════════════════════════════
+       STICKY TOP HEADER
+  ══════════════════════════════════════════════════════════ -->
+  <header class="fixed top-0 w-full z-50 pt-safe bg-[#071324]/90 backdrop-blur-xl border-b border-sky-500/10 shadow-[0_2px_16px_rgba(2,132,199,0.08)]">
+    <div class="max-w-md mx-auto h-16 px-margin flex items-center justify-between">
+      <div class="flex items-center gap-2.5">
+        <div class="w-9 h-9 rounded-xl overflow-hidden shadow-[0_0_12px_rgba(56,189,248,0.25)] border border-sky-400/30 shrink-0 bg-surface-container flex items-center justify-center">
+          <span class="text-sky-400 font-extrabold text-sm tracking-tighter">BBZ</span>
+        </div>
+        <div class="flex flex-col justify-center">
+          <div class="flex items-center">
+            <span class="font-headline-sm text-headline-sm tracking-tight font-extrabold text-white">BIGBOZ<span class="text-sky-400">STORE</span></span>
+          </div>
+          <div class="flex items-center gap-1.5">
+            <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+            <span class="font-label-sm text-[10px] text-emerald-400 tracking-wide uppercase font-semibold">Online 24 Jam • Garansi Aman</span>
+          </div>
+        </div>
+      </div>
+      <div class="flex items-center gap-space-sm">
+        <a id="headerWaBtn" class="min-h-[40px] px-3 rounded-lg bg-surface-container-high/80 text-emerald-400 border border-emerald-500/20 flex items-center gap-1.5 hover:bg-surface-container-highest transition-colors" href="https://wa.me/6281234567890" rel="noopener noreferrer" target="_blank">
+          <span class="material-symbols-outlined text-[19px]">support_agent</span>
+          <span class="font-label-md text-label-md hidden xs:inline font-semibold">WA Admin</span>
+        </a>
+        <a href="admin.html" class="w-9 h-9 rounded-full bg-sky-500/20 border border-sky-400/30 flex items-center justify-center text-sky-300 hover:bg-sky-500/30 transition-colors" title="Admin Panel">
+          <span class="material-symbols-outlined text-[18px]">settings</span>
+        </a>
+      </div>
+    </div>
+  </header>
+
+  <!-- ══════════════════════════════════════════════════════════
+       MAIN APP CONTAINER (Max width mobile friendly)
+  ══════════════════════════════════════════════════════════ -->
+  <main class="flex flex-col w-full max-w-md mx-auto pt-16 pb-36 px-margin bg-surface">
+    <div class="flex flex-col w-full gap-space-lg pt-4">
+
+      <!-- Promo Hero Card with Brand Aura -->
+      <div class="relative overflow-hidden rounded-2xl bg-gradient-to-br from-surface-container-low via-surface-container to-surface-container-low p-space-md border border-sky-500/20 shadow-[0_8px_30px_rgba(2,132,199,0.12)]">
+        <div class="absolute -right-8 -top-8 w-44 h-44 rounded-full bg-sky-500/15 blur-3xl pointer-events-none"></div>
+        <div class="absolute -left-8 -bottom-8 w-40 h-40 rounded-full bg-cyan-500/15 blur-3xl pointer-events-none"></div>
+        <div class="relative z-10 flex flex-col gap-space-sm">
+          <div class="flex items-center justify-between">
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-sky-500/15 border border-sky-400/30 text-sky-300 text-label-sm font-label-sm uppercase tracking-wider font-semibold">
+              <span class="material-symbols-outlined text-[14px] text-sky-400">electric_bolt</span>
+              Flash Store 24/7
+            </span>
+            <span class="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-emerald-500/15 border border-emerald-400/30 text-emerald-300 text-label-sm font-label-sm font-semibold">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              Server Normal
+            </span>
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <h2 class="font-headline-lg text-headline-lg text-white leading-tight font-extrabold">
+              Solusi Akun &amp; Top-Up <span class="bg-gradient-to-r from-sky-400 to-cyan-300 bg-clip-text text-transparent">Anti Ribet</span>
+            </h2>
+            <p class="font-body-sm text-body-sm text-slate-300/90 leading-relaxed">
+              Dapatkan akses akun premium, voucher game, dan jasa digital instan dalam hitungan menit tanpa login password!
+            </p>
+          </div>
+          <!-- 3 Key Value Props -->
+          <div class="grid grid-cols-3 gap-space-xs pt-space-xs">
+            <div class="flex flex-col items-center text-center p-2 rounded-xl bg-surface-container-high/60 border border-sky-500/10">
+              <span class="material-symbols-outlined text-emerald-400 text-[22px]">timer</span>
+              <span class="font-label-sm text-label-sm text-white font-bold mt-1">Kilat 1-5 Menit</span>
+              <span class="font-body-sm text-[10px] text-slate-400 leading-none mt-0.5">Otomatis kirim</span>
+            </div>
+            <div class="flex flex-col items-center text-center p-2 rounded-xl bg-surface-container-high/60 border border-sky-500/10">
+              <span class="material-symbols-outlined text-sky-400 text-[22px]">verified_user</span>
+              <span class="font-label-sm text-label-sm text-white font-bold mt-1">Garansi 100%</span>
+              <span class="font-body-sm text-[10px] text-slate-400 leading-none mt-0.5">Anti suspend</span>
+            </div>
+            <div class="flex flex-col items-center text-center p-2 rounded-xl bg-surface-container-high/60 border border-sky-500/10">
+              <span class="material-symbols-outlined text-cyan-400 text-[22px]">support_agent</span>
+              <span class="font-label-sm text-label-sm text-white font-bold mt-1">Panduan WA</span>
+              <span class="font-body-sm text-[10px] text-slate-400 leading-none mt-0.5">Live asistensi</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Visual 4-Step Interactive Checkout Flow -->
+      <div class="flex flex-col gap-space-xs bg-surface-container-low/90 border border-sky-500/15 p-space-md rounded-2xl shadow-sm">
+        <div class="flex items-center justify-between mb-1">
+          <span class="font-label-sm text-label-sm uppercase tracking-wider text-slate-400 font-semibold">Alur Pesanan Simpel</span>
+          <span class="font-label-sm text-label-sm text-sky-400 font-bold">4 Langkah Santai</span>
+        </div>
+        <div class="grid grid-cols-4 gap-space-xs relative">
+          <div class="flex flex-col items-center text-center gap-1.5 cursor-pointer" onclick="scrollToCatalog()">
+            <div class="w-8 h-8 rounded-full bg-gradient-to-tr from-sky-500 to-cyan-400 text-white font-headline-sm text-[13px] font-extrabold flex items-center justify-center shadow-[0_0_12px_rgba(56,189,248,0.4)]">1</div>
+            <span class="font-label-sm text-label-sm text-white font-semibold">Pilih Produk</span>
+          </div>
+          <div class="flex flex-col items-center text-center gap-1.5 cursor-pointer" onclick="scrollToCheckout()">
+            <div class="w-8 h-8 rounded-full bg-surface-container-highest border border-sky-500/20 text-slate-300 flex items-center justify-center font-headline-sm text-[13px]">2</div>
+            <span class="font-label-sm text-label-sm text-slate-400">Cek Cara Pakai</span>
+          </div>
+          <div class="flex flex-col items-center text-center gap-1.5 cursor-pointer" onclick="scrollToCheckout()">
+            <div class="w-8 h-8 rounded-full bg-surface-container-highest border border-sky-500/20 text-slate-300 flex items-center justify-center font-headline-sm text-[13px]">3</div>
+            <span class="font-label-sm text-label-sm text-slate-400">Bayar QRIS</span>
+          </div>
+          <div class="flex flex-col items-center text-center gap-1.5">
+            <div class="w-8 h-8 rounded-full bg-surface-container-highest border border-emerald-500/30 text-emerald-400 flex items-center justify-center font-headline-sm text-[13px]">
+              <span class="material-symbols-outlined text-[16px]">chat</span>
+            </div>
+            <span class="font-label-sm text-label-sm text-slate-400">Kirim WA</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Interactive Search Bar -->
+      <div class="relative flex items-center">
+        <span class="material-symbols-outlined absolute left-space-md text-sky-400/70 pointer-events-none text-[20px]">search</span>
+        <input class="w-full min-h-[48px] pl-11 pr-space-md rounded-xl bg-surface-container-low border border-sky-500/20 text-white font-body-md text-body-md placeholder-slate-400/70 focus:outline-none focus:border-sky-400 focus:bg-surface-container focus:ring-1 focus:ring-sky-400/50 transition-all" id="productSearchInput" placeholder="Cari voucher ML, ChatGPT Plus, Token PLN, VPN..." type="text"/>
+      </div>
+
+      <!-- Category Pills Filter (Horizontal Scroll) -->
+      <div class="flex flex-col gap-space-xs">
+        <div class="flex items-center gap-space-xs overflow-x-auto pb-1 no-scrollbar text-nowrap" id="categoryPillsContainer">
+          <button class="category-btn px-4 py-1.5 rounded-full bg-sky-500 text-white font-label-md text-label-md font-semibold shadow-[0_0_12px_rgba(56,189,248,0.35)] transition-all" onclick="filterCategory('semua', this)">
+            Semua
+          </button>
+        </div>
+      </div>
+
+      <!-- Product Catalog Grid (2-Columns) -->
+      <div class="flex flex-col gap-space-sm" id="catalogSectionWrapper">
+        <div class="flex items-center justify-between">
+          <h3 class="font-headline-sm text-headline-sm text-white font-bold">Katalog Produk Populer</h3>
+          <span class="font-label-sm text-label-sm text-sky-400 font-semibold" id="catalogCountBadge">Memuat katalog...</span>
+        </div>
+        <div class="grid grid-cols-2 gap-gutter" id="catalogGrid">
+          <!-- Dynamically rendered via JS -->
+        </div>
+      </div>
+
+      <!-- Dynamic Product Detail & Checkout Section (Langkah 2) -->
+      <section class="flex flex-col gap-space-md pt-space-xs" id="checkoutSection">
+        <!-- Section Header Step Indicator -->
+        <div class="flex items-center gap-space-xs">
+          <span class="flex items-center justify-center w-7 h-7 rounded-full bg-gradient-to-tr from-sky-500 to-cyan-400 text-white font-headline-sm text-[12px] font-bold shadow-[0_0_10px_rgba(56,189,248,0.4)]">2</span>
+          <div>
+            <h3 class="font-headline-sm text-headline-sm text-white font-bold">Kustomisasi &amp; Detail Pesanan</h3>
+            <p class="font-body-sm text-[11px] text-slate-400">Pilih varian nominal dan lengkapi data tujuan penerima</p>
+          </div>
+        </div>
+
+        <!-- Active Product Selected Summary Card -->
+        <div class="p-space-md rounded-2xl bg-surface-container-low border border-sky-500/20 flex items-center justify-between shadow-sm">
+          <div class="flex items-center gap-space-sm">
+            <div class="w-12 h-12 rounded-xl bg-sky-500/15 border border-sky-500/30 flex items-center justify-center text-sky-400 shadow-[0_0_12px_rgba(56,189,248,0.2)] overflow-hidden shrink-0">
+              <img id="activeProductImg" class="w-full h-full object-cover hidden" src="" alt="Active Product"/>
+              <span class="material-symbols-outlined text-[28px]" id="activeProductIcon">sports_esports</span>
+            </div>
+            <div class="flex flex-col">
+              <span class="font-label-sm text-[10px] uppercase text-emerald-400 font-bold tracking-wider">Sedang Dipilih</span>
+              <h4 class="font-headline-sm text-[16px] text-white font-bold leading-tight" id="activeProductTitle">Pilih Produk</h4>
+              <span class="font-body-sm text-[12px] text-slate-400" id="activeProductCategory">Kategori</span>
+            </div>
+          </div>
+          <button class="px-3 py-1.5 rounded-lg bg-surface-container-high border border-sky-500/20 text-sky-300 text-label-sm font-label-sm hover:bg-sky-500/20 transition-all font-semibold" onclick="scrollToCatalog()">
+            Ganti
+          </button>
+        </div>
+
+        <!-- Step-by-Step Cara Pakai (Pemula Friendly) -->
+        <div class="flex flex-col gap-space-xs p-space-md rounded-2xl bg-surface-container-low/90 border border-sky-500/15 shadow-sm">
+          <div class="flex items-center gap-1.5 text-sky-400">
+            <span class="material-symbols-outlined text-[18px]">help_outline</span>
+            <span class="font-label-md text-label-md font-bold text-sky-300">Panduan Cara Pakai &amp; Garansi</span>
+          </div>
+          <div class="flex flex-col gap-2 pt-1" id="usageGuideContainer">
+            <!-- Rendered via JS -->
+          </div>
+          <div class="mt-2 p-space-xs px-space-sm rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center gap-2">
+            <span class="material-symbols-outlined text-emerald-400 text-[16px]">verified</span>
+            <span class="font-body-sm text-[11px] text-emerald-300 font-medium">Garansi uang kembali 100% jika produk gagal terkirim dalam 30 menit.</span>
+          </div>
+        </div>
+
+        <!-- Variant Chips (Nominal Selector) -->
+        <div class="flex flex-col gap-space-xs">
+          <div class="flex items-center justify-between">
+            <label class="font-label-md text-label-md text-white font-semibold">Pilih Varian / Nominal</label>
+            <span class="font-label-sm text-label-sm text-emerald-400 font-semibold">Otomatis Terhitung</span>
+          </div>
+          <div class="grid grid-cols-2 gap-space-xs" id="variantGrid">
+            <!-- Rendered via JS -->
+          </div>
+        </div>
+
+        <!-- Adaptive Form Fields -->
+        <div class="flex flex-col gap-space-sm p-space-md rounded-2xl bg-surface-container-low border border-sky-500/15">
+          <label class="font-label-md text-label-md text-white font-bold">Data Pengiriman &amp; Kontak</label>
+          <!-- Dynamic Target Field -->
+          <div class="flex flex-col gap-1">
+            <label class="font-label-sm text-label-sm text-slate-400" id="targetInputLabel">User ID &amp; Server Game</label>
+            <div class="flex gap-2">
+              <input class="flex-1 min-h-[48px] px-space-md rounded-xl bg-surface-container border border-sky-500/15 text-white font-body-md text-body-md placeholder-slate-500 focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400/40 transition-all" id="targetInputMain" placeholder="Contoh: 12345678" type="text"/>
+              <input class="w-28 min-h-[48px] px-space-sm rounded-xl bg-surface-container border border-sky-500/15 text-white font-body-md text-body-md placeholder-slate-500 focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400/40 transition-all" id="targetInputSub" placeholder="(Zone ID)" type="text"/>
+            </div>
+            <p class="text-red-400 text-[11px] hidden" id="errTarget">Data tujuan wajib diisi!</p>
+          </div>
+          <!-- Buyer Name -->
+          <div class="flex flex-col gap-1">
+            <label class="font-label-sm text-label-sm text-slate-400">Nama Pembeli</label>
+            <input class="w-full min-h-[48px] px-space-md rounded-xl bg-surface-container border border-sky-500/15 text-white font-body-md text-body-md placeholder-slate-500 focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400/40 transition-all" id="buyerNameInput" placeholder="Nama panggilan kamu" type="text"/>
+            <p class="text-red-400 text-[11px] hidden" id="errName">Nama pembeli wajib diisi!</p>
+          </div>
+          <!-- WhatsApp Number -->
+          <div class="flex flex-col gap-1">
+            <div class="flex items-center justify-between">
+              <label class="font-label-sm text-label-sm text-slate-400">Nomor WhatsApp Aktif</label>
+              <span class="font-label-sm text-[10px] text-cyan-400">Untuk konfirmasi kilat</span>
+            </div>
+            <div class="relative flex items-center">
+              <span class="absolute left-space-md font-body-md text-body-md text-sky-400 font-bold">+62</span>
+              <input class="w-full min-h-[48px] pl-14 pr-space-md rounded-xl bg-surface-container border border-sky-500/15 text-white font-body-md text-body-md placeholder-slate-500 focus:outline-none focus:border-sky-400 focus:ring-1 focus:ring-sky-400/40 transition-all" id="buyerWaInput" placeholder="81234567890" type="tel"/>
+            </div>
+            <p class="text-red-400 text-[11px] hidden" id="errWa">Format nomor WhatsApp tidak valid (contoh: 0812... / 812...)!</p>
+          </div>
+        </div>
+
+        <!-- Payment Method Accordion / Selector (DANA & QRIS) -->
+        <div class="flex flex-col gap-space-xs">
+          <div class="flex items-center justify-between">
+            <label class="font-label-md text-label-md text-white font-semibold">Pilih Metode Pembayaran</label>
+            <span class="font-label-sm text-[11px] text-emerald-400 font-semibold">Bebas Biaya Admin</span>
+          </div>
+          <div class="grid grid-cols-2 gap-space-xs">
+            <!-- QRIS Option -->
+            <button class="payment-option p-space-sm rounded-xl bg-surface-container-low border border-sky-500/20 text-left flex flex-col justify-between transition-all min-h-[78px]" id="payMethodQris" onclick="selectPayment('QRIS')">
+              <div class="flex items-center justify-between w-full">
+                <span class="font-headline-sm text-[14px] font-bold text-white">QRIS</span>
+                <span class="payment-check-badge w-4 h-4 rounded-full bg-sky-500 text-white flex items-center justify-center text-[10px] shadow-[0_0_8px_rgba(56,189,248,0.5)]">✓</span>
+              </div>
+              <p class="font-body-sm text-[10px] text-slate-400">Semua E-Wallet / M-Banking</p>
+              <span class="font-label-sm text-[10px] text-emerald-400 font-semibold">Otomatis / Instan</span>
+            </button>
+            <!-- DANA Option -->
+            <button class="payment-option p-space-sm rounded-xl bg-surface-container-low border border-sky-500/15 text-left flex flex-col justify-between transition-all min-h-[78px]" id="payMethodDana" onclick="selectPayment('DANA')">
+              <div class="flex items-center justify-between w-full">
+                <span class="font-headline-sm text-[14px] font-bold text-white">DANA</span>
+                <span class="payment-check-badge hidden w-4 h-4 rounded-full bg-sky-500 text-white flex items-center justify-center text-[10px] shadow-[0_0_8px_rgba(56,189,248,0.5)]">✓</span>
+              </div>
+              <p class="font-body-sm text-[10px] text-slate-400">Transfer Dompet Digital</p>
+              <span class="font-label-sm text-[10px] text-emerald-400 font-semibold">Bebas Admin</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Generate Invoice Button -->
+        <button id="btnBuatPesanan" class="w-full min-h-[52px] rounded-xl bg-gradient-to-r from-sky-500 via-blue-600 to-indigo-600 hover:from-sky-400 hover:to-indigo-500 text-white font-headline-sm text-headline-sm shadow-[0_6px_20px_rgba(2,132,199,0.35)] flex items-center justify-center gap-2 transition-all mt-1 active:scale-[0.99] font-bold" onclick="generateOrderInvoice()">
+          <span class="material-symbols-outlined text-[22px]">receipt_long</span>
+          <span>Buat Pesanan Sekarang</span>
+        </button>
+      </section>
+
+      <!-- Step 3 & 4: Payment Instructions & WhatsApp Dispatch Modal/Box -->
+      <section class="hidden flex-col gap-space-md p-space-md rounded-2xl bg-surface-container-low border border-sky-500/30 shadow-[0_12px_36px_rgba(2,132,199,0.18)]" id="invoiceSection">
+        <div class="flex items-center justify-between">
+          <div class="flex items-center gap-2">
+            <span class="w-7 h-7 rounded-full bg-gradient-to-tr from-sky-500 to-cyan-400 text-white flex items-center justify-center font-headline-sm text-[12px] font-bold">3</span>
+            <h3 class="font-headline-sm text-headline-sm text-white font-bold">Instruksi Pembayaran</h3>
+          </div>
+          <span class="px-2.5 py-0.5 rounded-full bg-emerald-500/20 text-emerald-300 font-label-sm text-label-sm uppercase font-semibold border border-emerald-500/30">Menunggu Bukti</span>
+        </div>
+
+        <!-- Order ID Box with Copy Action -->
+        <div class="p-space-md rounded-xl bg-surface-container border border-sky-500/20 flex items-center justify-between">
+          <div class="flex flex-col">
+            <span class="font-body-sm text-[11px] text-slate-400">Kode Unik Pesanan</span>
+            <span class="font-headline-sm text-headline-sm text-sky-400 tracking-wider font-extrabold" id="displayOrderId">BBZ-2024</span>
+          </div>
+          <button class="min-h-[40px] px-space-sm rounded-lg bg-surface-container-high border border-sky-500/20 text-white flex items-center gap-1.5 hover:bg-sky-500/20 text-label-md font-label-md transition-colors" onclick="copyOrderId()">
+            <span class="material-symbols-outlined text-[16px] text-sky-400">content_copy</span>
+            <span id="copyBtnText">Salin ID</span>
+          </button>
+        </div>
+
+        <!-- Total Payment Due Box -->
+        <div class="p-space-md rounded-xl bg-surface-container-lowest border border-sky-500/20 flex flex-col gap-1 text-center">
+          <span class="font-label-sm text-label-sm text-slate-400 uppercase tracking-wider">Total yang Harus Dibayar</span>
+          <p class="font-headline-xl text-[28px] text-sky-400 font-extrabold tracking-tight" id="displayTotalPayment">Rp 0</p>
+          <span class="font-body-sm text-[11px] text-emerald-400 font-medium">Pastikan transfer nominal persis sampai digit terakhir</span>
+        </div>
+
+        <!-- Payment Target Account Information -->
+        <div class="p-space-md rounded-xl bg-surface-container border border-sky-500/15 flex flex-col gap-space-xs" id="paymentDestinationBox">
+          <div class="flex items-center justify-between">
+            <span class="font-headline-sm text-[14px] text-white font-bold" id="destMethodName">QRIS All Payment</span>
+            <span class="font-label-sm text-label-sm text-cyan-400 font-semibold">Scan Cepat</span>
+          </div>
+          <!-- Visual QRIS representation -->
+          <div class="flex flex-col items-center justify-center p-space-md bg-surface-container-lowest/80 rounded-xl border border-sky-500/15 gap-2" id="qrisVisualBox">
+            <div class="w-48 h-auto bg-white rounded-xl p-2 flex flex-col items-center justify-center shadow-md">
+              <img id="qrisImgDisplay" src="assets/img/qris.svg" alt="QRIS Code" class="w-full h-auto object-contain rounded-lg"/>
+            </div>
+            <span class="font-label-sm text-[11px] text-slate-400 text-center">Scan QRIS menggunakan BCA, DANA, GoPay, OVO, ShopeePay &amp; Semua M-Banking</span>
+          </div>
+          <!-- DANA Account Details (hidden by default) -->
+          <div class="hidden flex-col gap-3 p-space-sm bg-surface-container-lowest rounded-xl border border-sky-500/15" id="danaVisualBox">
+            <div class="flex items-center justify-between">
+              <div>
+                <span class="font-body-sm text-[11px] text-slate-400">Nomor DANA:</span>
+                <p class="font-headline-sm text-[16px] text-white font-bold" id="danaNumberDisplay">081234567890</p>
+              </div>
+              <button class="min-h-[36px] px-3 rounded-lg bg-surface-container-high border border-sky-500/20 text-white flex items-center gap-1 hover:bg-sky-500/20 text-xs font-semibold" onclick="copyDanaNumber()">
+                <span class="material-symbols-outlined text-[14px] text-sky-400">content_copy</span>
+                <span id="copyDanaBtnText">Salin</span>
+              </button>
+            </div>
+            <div class="flex items-center justify-between border-t border-sky-500/10 pt-2">
+              <span class="font-body-sm text-[11px] text-slate-400">Atas Nama:</span>
+              <span class="font-label-md text-label-md text-sky-400 font-semibold" id="danaNameDisplay">BIGBOZ OFFICIAL STORE</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Step 4: Big WhatsApp Dispatch Button -->
+        <div class="flex flex-col gap-space-xs pt-1">
+          <div class="flex items-center gap-1.5 text-emerald-400">
+            <span class="flex items-center justify-center w-5 h-5 rounded-full bg-emerald-500 text-white font-label-sm text-[11px] font-bold">4</span>
+            <span class="font-label-md text-label-md font-bold text-white">Langkah Terakhir: Verifikasi WhatsApp</span>
+          </div>
+          <a class="w-full min-h-[52px] px-space-md rounded-xl bg-emerald-500 hover:bg-emerald-400 text-white font-headline-sm text-[15px] shadow-[0_6px_20px_rgba(16,185,129,0.35)] flex items-center justify-center gap-2 transition-all font-bold active:scale-[0.99]" href="#" id="sendWhatsAppButton" rel="noopener noreferrer" target="_blank">
+            <span class="material-symbols-outlined text-[22px]">chat</span>
+            <span>Kirim Bukti Pembayaran ke WhatsApp</span>
+          </a>
+          <p class="text-center font-body-sm text-[11px] text-slate-400 mt-1">
+            Admin siap 24 jam memproses verifikasi dan kirim akun / token kamu langsung.
+          </p>
+        </div>
+      </section>
+
+      <!-- Interactive Accordion FAQ for Beginner Shoppers -->
+      <section class="flex flex-col gap-space-sm" id="faqSection">
+        <div class="flex flex-col">
+          <h3 class="font-headline-sm text-headline-sm text-white font-bold">Pertanyaan Sering Diajukan (FAQ)</h3>
+          <p class="font-body-sm text-body-sm text-slate-400">Jawaban ramah untuk keraguan pembeli awam</p>
+        </div>
+        <div class="flex flex-col gap-space-xs">
+          <!-- FAQ 1 -->
+          <div class="faq-item rounded-xl bg-surface-container-low border border-sky-500/15 overflow-hidden transition-colors hover:border-sky-500/30">
+            <button class="w-full p-space-md flex items-center justify-between text-left" onclick="toggleFaq(this)">
+              <span class="font-label-md text-label-md text-slate-200 font-semibold">Berapa lama waktu proses pengiriman voucher/akun?</span>
+              <span class="material-symbols-outlined text-sky-400 transition-transform">expand_more</span>
+            </button>
+            <div class="faq-answer hidden px-space-md pb-space-md text-slate-300 font-body-sm text-body-sm leading-relaxed border-t border-sky-500/10 pt-2">
+              Semua pesanan otomatis diproses secara real-time. Diamond Mobile Legends, Free Fire, dan Token PLN biasanya masuk dalam kurun 1-5 menit setelah bukti bayar terverifikasi admin. Akun Gemini Pro / AI membutuhkan waktu maksimal 1x24 jam untuk konfigurasi khusus.
+            </div>
+          </div>
+          <!-- FAQ 2 -->
+          <div class="faq-item rounded-xl bg-surface-container-low border border-sky-500/15 overflow-hidden transition-colors hover:border-sky-500/30">
+            <button class="w-full p-space-md flex items-center justify-between text-left" onclick="toggleFaq(this)">
+              <span class="font-label-md text-label-md text-slate-200 font-semibold">Apakah aman dan membutuhkan password akun saya?</span>
+              <span class="material-symbols-outlined text-sky-400 transition-transform">expand_more</span>
+            </button>
+            <div class="faq-answer hidden px-space-md pb-space-md text-slate-300 font-body-sm text-body-sm leading-relaxed border-t border-sky-500/10 pt-2">
+              Sangat aman 100%! Untuk game (MLBB / Free Fire) kami hanya meminta User ID &amp; Zone ID publik. Tidak pernah meminta sandi ataupun email login akun pribadi Anda. Untuk Akun AI, kami memberikan akun siap pakai baru.
+            </div>
+          </div>
+          <!-- FAQ 3 -->
+          <div class="faq-item rounded-xl bg-surface-container-low border border-sky-500/15 overflow-hidden transition-colors hover:border-sky-500/30">
+            <button class="w-full p-space-md flex items-center justify-between text-left" onclick="toggleFaq(this)">
+              <span class="font-label-md text-label-md text-slate-200 font-semibold">Bagaimana jika transfer gagal atau produk belum masuk?</span>
+              <span class="material-symbols-outlined text-sky-400 transition-transform">expand_more</span>
+            </button>
+            <div class="faq-answer hidden px-space-md pb-space-md text-slate-300 font-body-sm text-body-sm leading-relaxed border-t border-sky-500/10 pt-2">
+              Jangan khawatir! Tim Customer Service WhatsApp kami online siap membantu. Jika sistem mengalami gangguan teknis dari provider, kami menjamin garansi uang kembali (refund) 100% tanpa potongan admin.
+            </div>
+          </div>
+          <!-- FAQ 4 -->
+          <div class="faq-item rounded-xl bg-surface-container-low border border-sky-500/15 overflow-hidden transition-colors hover:border-sky-500/30">
+            <button class="w-full p-space-md flex items-center justify-between text-left" onclick="toggleFaq(this)">
+              <span class="font-label-md text-label-md text-slate-200 font-semibold">Apakah bisa bayar via transfer bank konvensional?</span>
+              <span class="material-symbols-outlined text-sky-400 transition-transform">expand_more</span>
+            </button>
+            <div class="faq-answer hidden px-space-md pb-space-md text-slate-300 font-body-sm text-body-sm leading-relaxed border-t border-sky-500/10 pt-2">
+              Bisa sekali! Anda cukup memilih opsi pembayaran QRIS lalu scan menggunakan aplikasi Mobile Banking bank apa saja (BCA, Mandiri, BRI, BNI, CIMB, dll) tanpa biaya tambahan transfer antar-bank.
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <!-- ══════════════════════════════════════════════════════════
+       FLOATING WHATSAPP BUTTON
+  ══════════════════════════════════════════════════════════ -->
+  <div class="fixed bottom-20 w-full z-40 pointer-events-none">
+    <div class="max-w-md mx-auto px-margin flex justify-end">
+      <a id="floatingWaBtn" class="pointer-events-auto min-h-[48px] px-4 py-2.5 rounded-full bg-emerald-500 text-white shadow-[0_6px_20px_rgba(16,185,129,0.4)] border border-emerald-400/40 flex items-center gap-2 hover:bg-emerald-400 transition-all font-semibold" href="https://wa.me/6281234567890" rel="noopener noreferrer" target="_blank">
+        <span class="material-symbols-outlined text-[20px]">chat</span>
+        <span class="font-label-md text-label-md">Bantuan WA Cepat</span>
+      </a>
+    </div>
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       BOTTOM NAVIGATION BAR
+  ══════════════════════════════════════════════════════════ -->
+  <nav class="fixed bottom-0 w-full z-50 pb-safe bg-[#071324]/90 backdrop-blur-xl border-t border-sky-500/15 shadow-[0_-4px_20px_rgba(0,0,0,0.4)]">
+    <div class="max-w-md mx-auto h-16 px-space-xs flex items-center justify-around">
+      <button class="nav-bottom-item min-h-[44px] min-w-[44px] flex-1 flex flex-col items-center justify-center gap-0.5 transition-colors text-sky-400 font-semibold" onclick="scrollToTop()">
+        <span class="material-symbols-outlined text-[22px]">sports_esports</span>
+        <span class="font-label-sm text-label-sm">Beranda</span>
+      </button>
+      <button class="nav-bottom-item min-h-[44px] min-w-[44px] flex-1 flex flex-col items-center justify-center gap-0.5 text-slate-400 transition-colors hover:text-sky-300" onclick="checkRecentOrder()">
+        <span class="material-symbols-outlined text-[22px]">receipt_long</span>
+        <span class="font-label-sm text-label-sm">Cek Pesanan</span>
+      </button>
+      <button class="nav-bottom-item min-h-[44px] min-w-[44px] flex-1 flex flex-col items-center justify-center gap-0.5 text-slate-400 transition-colors hover:text-sky-300" onclick="scrollToFaq()">
+        <span class="material-symbols-outlined text-[22px]">help_center</span>
+        <span class="font-label-sm text-label-sm">Bantuan FAQ</span>
+      </button>
+      <a class="nav-bottom-item min-h-[44px] min-w-[44px] flex-1 flex flex-col items-center justify-center gap-0.5 text-slate-400 transition-colors hover:text-sky-300" href="admin.html">
+        <span class="material-symbols-outlined text-[22px]">admin_panel_settings</span>
+        <span class="font-label-sm text-label-sm">Admin</span>
+      </a>
+    </div>
+  </nav>
+
+  <!-- Toast Notification element -->
+  <div id="toastNotification" class="fixed top-20 left-1/2 -translate-x-1/2 z-[100] hidden px-4 py-2.5 rounded-xl bg-slate-800 text-white border border-sky-400/40 text-xs font-semibold shadow-2xl transition-all">
+    Pemberitahuan
+  </div>
+
+  <!-- ══════════════════════════════════════════════════════════
+       SCRIPTS: Admin Data Bridge + API + Utils + Interactive Store Logic
+  ══════════════════════════════════════════════════════════ -->
+  <script src="js/admin-data.js"></script>
+  <script src="js/api.js"></script>
+  <script src="js/utils.js"></script>
+  <script>
+    // Global State for Store
+    let rawProductList = [];
+    let groupedProducts = {}; // key: slug/name -> { title, category, image, minPrice, steps, variants: [] }
+    let currentProductKey = '';
+    let selectedVariantIndex = 0;
+    let selectedPaymentMethod = 'QRIS';
+    let currentActiveCategory = 'semua';
+    let generatedOrderId = '';
+
+    // Category Material Symbol mapping
+    const CATEGORY_ICONS = {
+      'Akun Premium': 'psychology',
+      'Akun AI & Tools': 'psychology',
+      'Top Up Game': 'sports_esports',
+      'Voucher Game': 'sports_esports',
+      'PPOB': 'bolt',
+      'Listrik & Pulsa': 'bolt',
+      'Paket Data': 'vpn_lock',
+      'Jaringan & VPN': 'vpn_lock',
+      'Jasa Digital': 'devices',
+      'Jasa Kreatif': 'palette'
+    };
+
+    function showToast(msg, isError = false) {
+      const toast = document.getElementById('toastNotification');
+      toast.textContent = msg;
+      toast.className = `fixed top-20 left-1/2 -translate-x-1/2 z-[100] px-4 py-2.5 rounded-xl ${isError ? 'bg-red-900/90 border-red-500/40 text-red-200' : 'bg-surface-container border-sky-400/40 text-sky-200'} text-xs font-semibold shadow-2xl transition-all`;
+      toast.classList.remove('hidden');
+      clearTimeout(window._toastTimer);
+      window._toastTimer = setTimeout(() => {
+        toast.classList.add('hidden');
+      }, 3000);
+    }
+
+    // Initialize Store
+    async function initStore() {
+      // Configure WhatsApp & Payment from CONFIG
+      if (window.BIGBOZ_CONFIG) {
+        const waNum = window.BIGBOZ_CONFIG.WA_ADMIN || '6281234567890';
+        const waLink = `https://wa.me/${waNum}?text=${encodeURIComponent('Halo Admin BIGBOZ STORE, saya mau tanya seputar produk.')}`;
+        document.getElementById('headerWaBtn').href = waLink;
+        document.getElementById('floatingWaBtn').href = waLink;
+
+        document.getElementById('danaNumberDisplay').textContent = window.BIGBOZ_CONFIG.DANA_NUMBER || '081234567890';
+        document.getElementById('danaNameDisplay').textContent = window.BIGBOZ_CONFIG.DANA_NAME || 'BIGBOZ OFFICIAL STORE';
+
+        if (window.BIGBOZ_CONFIG.QRIS_IMAGE) {
+          document.getElementById('qrisImgDisplay').src = window.BIGBOZ_CONFIG.QRIS_IMAGE;
+        }
+      }
+
+      // Fetch products (from Admin localStorage if modified, or API/Mock)
+      try {
+        rawProductList = await window.BigbozAPI.fetchProducts();
+      } catch (e) {
+        console.error('Failed to fetch products', e);
+        rawProductList = [];
+      }
+
+      processProductData();
+      renderCategoryPills();
+      renderCatalogGrid();
+
+      // Check URL params or default to first product
+      const keys = Object.keys(groupedProducts);
+      if (keys.length > 0) {
+        selectProduct(keys[0], false);
+      }
+      selectPayment('QRIS');
+    }
+
+    // Group single rows into Product Cards with multiple variants
+    function processProductData() {
+      groupedProducts = {};
+
+      rawProductList.forEach(item => {
+        if (item.status_aktif === 'false' || item.status_aktif === false) return; // skip inactive
+
+        const key = item.nama.toLowerCase().replace(/[^a-z0-9]/g, '_');
+        if (!groupedProducts[key]) {
+          groupedProducts[key] = {
+            key: key,
+            title: item.nama,
+            category: item.kategori,
+            description: item.deskripsi || '',
+            image: item.gambar || 'assets/img/prod_default.svg',
+            field_input: item.field_input || '',
+            steps: (item.langkah_pakai || '').split('|').filter(Boolean),
+            variants: [],
+            badge: item.badge || '',
+            totalStock: 0
+          };
+        }
+
+        const price = Number(item.harga) || 0;
+        const stock = Number(item.stok) || 0;
+        groupedProducts[key].totalStock += stock;
+
+        groupedProducts[key].variants.push({
+          id: item.id,
+          label: item.varian,
+          price: price,
+          formatted: price > 0 ? (window.Utils ? window.Utils.formatRupiah(price) : 'Rp ' + price.toLocaleString('id-ID')) : 'Via Admin',
+          stok: stock,
+          popular: (item.badge === 'Terlaris' || item.badge === 'Promo')
+        });
+      });
+
+      // Compute min price for each product
+      Object.values(groupedProducts).forEach(prod => {
+        const prices = prod.variants.map(v => v.price).filter(p => p > 0);
+        prod.minPrice = prices.length > 0 ? Math.min(...prices) : 0;
+      });
+    }
+
+    // Render Category Filter Pills
+    function renderCategoryPills() {
+      const container = document.getElementById('categoryPillsContainer');
+      const categories = ['semua', ...new Set(Object.values(groupedProducts).map(p => p.category))];
+
+      container.innerHTML = categories.map((cat, idx) => {
+        const isAll = cat === 'semua';
+        const label = isAll ? 'Semua' : cat;
+        return `
+          <button class="category-btn px-4 py-1.5 rounded-full ${isAll ? 'bg-sky-500 text-white shadow-[0_0_12px_rgba(56,189,248,0.35)]' : 'bg-surface-container-low border border-sky-500/20 text-slate-300 hover:text-sky-300 hover:border-sky-500/40'} font-label-md text-label-md transition-all font-semibold shrink-0" onclick="filterCategory('${cat}', this)">
+            ${label}
+          </button>
+        `;
+      }).join('');
+    }
+
+    // Render 2-Column Catalog Grid
+    function renderCatalogGrid() {
+      const container = document.getElementById('catalogGrid');
+      const searchVal = (document.getElementById('productSearchInput').value || '').toLowerCase().trim();
+      const products = Object.values(groupedProducts);
+
+      let visibleCount = 0;
+      let html = '';
+
+      products.forEach(p => {
+        const matchCat = currentActiveCategory === 'semua' || p.category === currentActiveCategory;
+        const matchSearch = !searchVal || 
+          p.title.toLowerCase().includes(searchVal) || 
+          p.category.toLowerCase().includes(searchVal) ||
+          p.variants.some(v => v.label.toLowerCase().includes(searchVal));
+
+        if (!matchCat || !matchSearch) return;
+
+        visibleCount++;
+        const isOutOfStock = p.totalStock <= 0;
+        const iconName = CATEGORY_ICONS[p.category] || 'category';
+        const minPriceText = p.minPrice > 0 
+          ? (window.Utils ? window.Utils.formatRupiah(p.minPrice) : 'Rp ' + p.minPrice.toLocaleString('id-ID'))
+          : 'Via Admin';
+
+        const badgeHtml = isOutOfStock
+          ? `<div class="absolute top-2 left-2 px-2 py-0.5 rounded-full bg-red-600 text-white font-label-sm text-[9px] uppercase font-extrabold shadow-sm">❌ Stok Habis</div>`
+          : p.badge
+          ? `<div class="absolute top-2 left-2 px-2 py-0.5 rounded-full ${p.badge === 'Terlaris' ? 'bg-sky-500' : 'bg-emerald-500'} text-white font-label-sm text-[9px] uppercase font-extrabold shadow-sm">${p.badge}</div>`
+          : '';
+
+        html += `
+          <div class="product-item flex flex-col justify-between bg-surface-container-low/95 border ${isOutOfStock ? 'border-red-500/20 opacity-70' : 'border-sky-500/15 hover:border-sky-500/40'} rounded-xl overflow-hidden shadow-sm hover:shadow-[0_4px_20px_rgba(56,189,248,0.12)] transition-all cursor-pointer" onclick="selectProduct('${p.key}')">
+            <div class="relative h-28 w-full bg-surface-container-highest overflow-hidden">
+              <img class="w-full h-full object-cover ${isOutOfStock ? 'grayscale opacity-50' : ''}" src="${p.image}" alt="${p.title}" loading="lazy" onerror="this.src='data:image/svg+xml,<svg xmlns=\\'http://www.w3.org/2000/svg\\' viewBox=\\'0 0 100 100\\'><rect width=\\'100\\' height=\\'100\\' fill=\\'%23112642\\'/><text x=\\'50\\' y=\\'55\\' text-anchor=\\'middle\\' font-size=\\'36\\' fill=\\'%2338bdf8\\'>⚡</text></svg>'"/>
+              ${badgeHtml}
+            </div>
+            <div class="p-space-sm flex flex-col gap-space-xs flex-1 justify-between">
+              <div class="flex flex-col">
+                <span class="font-label-sm text-[10px] text-cyan-400 font-semibold">${p.category}</span>
+                <h4 class="font-headline-sm text-[15px] font-bold text-white leading-tight mt-0.5">${p.title}</h4>
+                <p class="font-body-sm text-[11px] text-slate-400 line-clamp-1 mt-0.5">${p.description || p.variants.map(v => v.label).join(', ')}</p>
+              </div>
+              <div class="pt-2 flex flex-col gap-2">
+                <div>
+                  <span class="font-body-sm text-[10px] text-slate-400">Mulai dari</span>
+                  <p class="font-headline-sm text-[15px] text-sky-400 font-extrabold leading-none">${minPriceText}</p>
+                </div>
+                <button type="button" class="w-full min-h-[44px] rounded-lg ${isOutOfStock ? 'bg-surface-container text-slate-500 cursor-not-allowed' : 'bg-surface-container-high hover:bg-sky-500 hover:text-white text-sky-300 border border-sky-500/20'} font-label-md text-label-md flex items-center justify-center gap-1 transition-all" ${isOutOfStock ? 'disabled' : ''}>
+                  <span>${isOutOfStock ? 'Stok Kosong' : 'Pilih Opsi'}</span>
+                  <span class="material-symbols-outlined text-[16px]">${isOutOfStock ? 'block' : 'chevron_right'}</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        `;
+      });
+
+      if (visibleCount === 0) {
+        container.innerHTML = `
+          <div class="col-span-2 text-center py-12 text-slate-400 bg-surface-container-low/50 rounded-2xl border border-sky-500/10">
+            <span class="material-symbols-outlined text-4xl text-sky-400/50 mb-2">search_off</span>
+            <p class="font-semibold text-sm">Tidak ada produk ditemukan</p>
+            <p class="text-xs text-slate-500 mt-1">Coba kata kunci lain atau pilih kategori Semua.</p>
+          </div>
+        `;
+      } else {
+        container.innerHTML = html;
+      }
+
+      document.getElementById('catalogCountBadge').textContent = `${visibleCount} Produk Tersedia`;
+    }
+
+    // Filter by Category
+    function filterCategory(cat, btn) {
+      currentActiveCategory = cat;
+      document.querySelectorAll('.category-btn').forEach(b => {
+        b.className = 'category-btn px-4 py-1.5 rounded-full bg-surface-container-low border border-sky-500/20 text-slate-300 hover:text-sky-300 hover:border-sky-500/40 font-label-md text-label-md transition-all font-semibold shrink-0';
+      });
+      if (btn) {
+        btn.className = 'category-btn px-4 py-1.5 rounded-full bg-sky-500 text-white font-label-md text-label-md font-semibold shadow-[0_0_12px_rgba(56,189,248,0.35)] transition-all shrink-0';
+      }
+      renderCatalogGrid();
+    }
+
+    // Select Product and populate Section 2
+    function selectProduct(key, shouldScroll = true) {
+      const product = groupedProducts[key];
+      if (!product) return;
+
+      currentProductKey = key;
+      selectedVariantIndex = 0;
+
+      // Update Summary Header Card
+      document.getElementById('activeProductTitle').textContent = product.title;
+      document.getElementById('activeProductCategory').textContent = product.category;
+
+      const imgEl = document.getElementById('activeProductImg');
+      const iconEl = document.getElementById('activeProductIcon');
+      if (product.image) {
+        imgEl.src = product.image;
+        imgEl.classList.remove('hidden');
+        iconEl.classList.add('hidden');
+      } else {
+        imgEl.classList.add('hidden');
+        iconEl.classList.remove('hidden');
+        iconEl.textContent = CATEGORY_ICONS[product.category] || 'sports_esports';
+      }
+
+      // Populate Steps
+      const guideContainer = document.getElementById('usageGuideContainer');
+      const defaultSteps = [
+        'Pastikan data akun / tujuan yang Anda isi sudah benar.',
+        'Pilih nominal varian dan metode bayar yang diinginkan.',
+        'Selesaikan pembayaran dan kirimkan bukti ke WhatsApp admin untuk proses kilat!'
+      ];
+      const steps = product.steps.length > 0 ? product.steps : defaultSteps;
+
+      guideContainer.innerHTML = steps.map((st, i) => `
+        <div class="flex items-start gap-2.5">
+          <span class="w-5 h-5 rounded-full bg-sky-500/20 border border-sky-400/40 flex items-center justify-center font-label-sm text-[11px] text-sky-300 font-bold shrink-0 mt-0.5">${i + 1}</span>
+          <p class="font-body-sm text-body-sm text-slate-300">${st}</p>
+        </div>
+      `).join('');
+
+      // Populate Variants
+      renderVariants();
+
+      // Configure Dynamic Input Fields
+      setupInputFields(product.field_input);
+
+      if (shouldScroll) {
+        scrollToCheckout();
+      }
+    }
+
+    // Render Variant Chips
+    function renderVariants() {
+      const product = groupedProducts[currentProductKey];
+      const container = document.getElementById('variantGrid');
+      container.innerHTML = '';
+
+      if (!product || product.variants.length === 0) {
+        container.innerHTML = '<p class="col-span-2 text-xs text-slate-500">Tidak ada varian tersedia</p>';
+        return;
+      }
+
+      product.variants.forEach((v, idx) => {
+        const isSelected = idx === selectedVariantIndex;
+        const isOutOfStock = v.stok <= 0;
+        const chip = document.createElement('button');
+        chip.type = 'button';
+        chip.className = `p-space-sm rounded-xl text-left flex flex-col justify-between transition-all min-h-[64px] border ${
+          isOutOfStock 
+            ? 'bg-surface-container/40 border-slate-700/50 opacity-40 cursor-not-allowed'
+            : isSelected 
+              ? 'bg-sky-500/15 border-sky-400 text-white shadow-[0_0_15px_rgba(56,189,248,0.25)]' 
+              : 'bg-surface-container-low border-sky-500/15 text-slate-300 hover:border-sky-500/30 hover:bg-surface-container'
+        }`;
+
+        if (!isOutOfStock) {
+          chip.onclick = () => {
+            selectedVariantIndex = idx;
+            renderVariants();
+          };
+        } else {
+          chip.disabled = true;
+        }
+
+        chip.innerHTML = `
+          <div class="flex items-center justify-between w-full">
+            <span class="font-label-md text-label-md ${isSelected ? 'text-white font-bold' : 'text-slate-200'}">${v.label}</span>
+            ${isSelected ? '<span class="text-sky-400 text-label-sm font-bold">✓</span>' : ''}
+          </div>
+          <div class="flex items-center justify-between w-full mt-1">
+            <span class="font-headline-sm text-[13px] ${isSelected ? 'text-sky-300 font-extrabold' : 'text-sky-400 font-bold'}">${v.formatted}</span>
+            ${isOutOfStock 
+              ? '<span class="text-[9px] px-1 py-0.5 rounded bg-red-900/40 text-red-400 font-bold">Kosong</span>'
+              : v.popular 
+                ? '<span class="text-[9px] px-1.5 py-0.5 rounded bg-sky-500/20 text-sky-300 uppercase font-bold border border-sky-400/30">Populer</span>' 
+                : ''}
+          </div>
+        `;
+        container.appendChild(chip);
+      });
+    }
+
+    // Configure Target Input based on field_input
+    function setupInputFields(rawFieldInput) {
+      const labelEl = document.getElementById('targetInputLabel');
+      const mainInput = document.getElementById('targetInputMain');
+      const subInput = document.getElementById('targetInputSub');
+
+      if (!rawFieldInput) {
+        labelEl.textContent = 'Nomor / ID Akun Tujuan';
+        mainInput.placeholder = 'Contoh: 12345678 / email@anda.com';
+        subInput.classList.add('hidden');
+        return;
+      }
+
+      const parts = rawFieldInput.split('|').map(s => s.trim()).filter(Boolean);
+      if (parts.length > 1) {
+        labelEl.textContent = `${parts[0]} & ${parts[1]}`;
+        mainInput.placeholder = `Masukkan ${parts[0]}`;
+        subInput.placeholder = `(${parts[1]})`;
+        subInput.classList.remove('hidden');
+      } else {
+        labelEl.textContent = parts[0];
+        mainInput.placeholder = `Masukkan ${parts[0]}`;
+        subInput.classList.add('hidden');
+      }
+    }
+
+    // Select Payment Method
+    function selectPayment(method) {
+      selectedPaymentMethod = method;
+      const qrisBtn = document.getElementById('payMethodQris');
+      const danaBtn = document.getElementById('payMethodDana');
+
+      if (method === 'QRIS') {
+        qrisBtn.className = "payment-option p-space-sm rounded-xl bg-sky-500/15 border-2 border-sky-400 text-left flex flex-col justify-between transition-all min-h-[78px] shadow-[0_0_12px_rgba(56,189,248,0.2)]";
+        qrisBtn.querySelector('.payment-check-badge').classList.remove('hidden');
+
+        danaBtn.className = "payment-option p-space-sm rounded-xl bg-surface-container-low border border-sky-500/15 text-left flex flex-col justify-between transition-all min-h-[78px]";
+        danaBtn.querySelector('.payment-check-badge').classList.add('hidden');
+      } else {
+        danaBtn.className = "payment-option p-space-sm rounded-xl bg-sky-500/15 border-2 border-sky-400 text-left flex flex-col justify-between transition-all min-h-[78px] shadow-[0_0_12px_rgba(56,189,248,0.2)]";
+        danaBtn.querySelector('.payment-check-badge').classList.remove('hidden');
+
+        qrisBtn.className = "payment-option p-space-sm rounded-xl bg-surface-container-low border border-sky-500/15 text-left flex flex-col justify-between transition-all min-h-[78px]";
+        qrisBtn.querySelector('.payment-check-badge').classList.add('hidden');
+      }
+    }
+
+    // Generate Order & Submit
+    async function generateOrderInvoice() {
+      const product = groupedProducts[currentProductKey];
+      if (!product || product.variants.length === 0) {
+        showToast('Pilih produk terlebih dahulu!', true);
+        return;
+      }
+
+      const variant = product.variants[selectedVariantIndex];
+      if (!variant || variant.stok <= 0) {
+        showToast('Varian yang dipilih sedang kosong!', true);
+        return;
+      }
+
+      const mainTarget = document.getElementById('targetInputMain').value.trim();
+      const subTarget = (!document.getElementById('targetInputSub').classList.contains('hidden')) 
+        ? document.getElementById('targetInputSub').value.trim() 
+        : '';
+      const buyerName = document.getElementById('buyerNameInput').value.trim();
+      const buyerWa = document.getElementById('buyerWaInput').value.trim();
+
+      // Reset errors
+      document.getElementById('errTarget').classList.add('hidden');
+      document.getElementById('errName').classList.add('hidden');
+      document.getElementById('errWa').classList.add('hidden');
+
+      let hasError = false;
+      if (!mainTarget) {
+        document.getElementById('errTarget').classList.remove('hidden');
+        hasError = true;
+      }
+      if (!buyerName) {
+        document.getElementById('errName').classList.remove('hidden');
+        hasError = true;
+      }
+      if (!buyerWa || buyerWa.length < 8) {
+        document.getElementById('errWa').classList.remove('hidden');
+        hasError = true;
+      }
+
+      if (hasError) {
+        showToast('Mohon lengkapi semua field yang wajib diisi!', true);
+        return;
+      }
+
+      const btn = document.getElementById('btnBuatPesanan');
+      btn.disabled = true;
+      btn.innerHTML = `<span class="material-symbols-outlined text-[20px] animate-spin">sync</span><span>Memproses Pesanan...</span>`;
+
+      // Build target text
+      const targetText = subTarget ? `${mainTarget} (${subTarget})` : mainTarget;
+      const normalizedWa = buyerWa.startsWith('0') ? '62' + buyerWa.substring(1) : buyerWa.startsWith('62') ? buyerWa : '62' + buyerWa;
+
+      // Submit via BigbozAPI
+      let orderIdResult = '';
+      try {
+        const orderData = {
+          produk_id: variant.id,
+          nama: buyerName,
+          wa: normalizedWa,
+          produk: product.title,
+          varian: variant.label,
+          harga: variant.price,
+          target: [{ label: 'ID/Tujuan', nilai: targetText }],
+          metode: selectedPaymentMethod
+        };
+
+        const result = await window.BigbozAPI.submitOrder(orderData);
+        orderIdResult = result.order_id || `BBZ-${new Date().toISOString().slice(0,10).replace(/-/g,'')}-${Math.floor(1000 + Math.random() * 9000)}`;
+      } catch (err) {
+        console.warn('Backend API error or demo mode, creating local order ID', err);
+        orderIdResult = `BBZ-${new Date().toISOString().slice(0,10).replace(/-/g,'')}-${Math.floor(1000 + Math.random() * 9000)}`;
+      }
+
+      generatedOrderId = orderIdResult;
+
+      // Save to localStorage for recovery
+      const orderRecord = {
+        orderId: generatedOrderId,
+        product: product.title,
+        variant: variant.label,
+        total: variant.price,
+        formatted: variant.formatted,
+        target: targetText,
+        name: buyerName,
+        wa: normalizedWa,
+        method: selectedPaymentMethod,
+        date: new Date().toISOString()
+      };
+      if (window.Utils) {
+        window.Utils.simpanLokal('pesanan_terakhir', orderRecord);
+      } else {
+        localStorage.setItem('bbz_pesanan_terakhir', JSON.stringify(orderRecord));
+      }
+
+      // Populate Display Invoice
+      document.getElementById('displayOrderId').textContent = generatedOrderId;
+      document.getElementById('displayTotalPayment').textContent = variant.formatted;
+
+      const destName = document.getElementById('destMethodName');
+      const qrisBox = document.getElementById('qrisVisualBox');
+      const danaBox = document.getElementById('danaVisualBox');
+
+      if (selectedPaymentMethod === 'QRIS') {
+        destName.textContent = 'QRIS All Payment (BCA/DANA/Gopay/OVO)';
+        qrisBox.classList.remove('hidden');
+        danaBox.classList.add('hidden');
+      } else {
+        destName.textContent = 'Transfer Akun DANA';
+        qrisBox.classList.add('hidden');
+        danaBox.classList.remove('hidden');
+      }
+
+      // Prepare WhatsApp URL
+      const waAdmin = (window.BIGBOZ_CONFIG && window.BIGBOZ_CONFIG.WA_ADMIN) || '6281234567890';
+      const waMessage = 
+`Halo Admin BIGBOZ STORE!
+Saya ingin konfirmasi bukti pembayaran pesanan saya:
+
+*ID Pesanan:* ${generatedOrderId}
+*Produk:* ${product.title}
+*Varian:* ${variant.label}
+*Data Tujuan:* ${targetText}
+*Nama Pembeli:* ${buyerName}
+*No. WhatsApp:* +${normalizedWa}
+*Metode Bayar:* ${selectedPaymentMethod}
+*Total Transfer:* ${variant.formatted}
+
+Berikut bukti pembayaran saya (terlampir screenshot).
+Mohon segera diproses ya min, terima kasih!`;
+
+      document.getElementById('sendWhatsAppButton').href = `https://wa.me/${waAdmin}?text=${encodeURIComponent(waMessage)}`;
+
+      // Show Invoice Section & Scroll
+      const invSection = document.getElementById('invoiceSection');
+      invSection.classList.remove('hidden');
+      invSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+
+      // Restore button
+      btn.disabled = false;
+      btn.innerHTML = `<span class="material-symbols-outlined text-[22px]">receipt_long</span><span>Buat Pesanan Sekarang</span>`;
+      showToast('Pesanan berhasil dibuat! Silakan bayar dan kirim bukti ke WhatsApp.');
+    }
+
+    // Copy actions
+    function copyOrderId() {
+      navigator.clipboard.writeText(generatedOrderId).then(() => {
+        const btnText = document.getElementById('copyBtnText');
+        btnText.textContent = 'Tersalin!';
+        setTimeout(() => { btnText.textContent = 'Salin ID'; }, 2000);
+        showToast('ID Pesanan disalin ke clipboard');
+      });
+    }
+
+    function copyDanaNumber() {
+      const num = document.getElementById('danaNumberDisplay').textContent;
+      navigator.clipboard.writeText(num).then(() => {
+        const btnText = document.getElementById('copyDanaBtnText');
+        btnText.textContent = 'Tersalin!';
+        setTimeout(() => { btnText.textContent = 'Salin'; }, 2000);
+        showToast('Nomor DANA disalin');
+      });
+    }
+
+    // Scroll helpers
+    function scrollToCatalog() {
+      document.getElementById('catalogSectionWrapper').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function scrollToCheckout() {
+      document.getElementById('checkoutSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function scrollToTop() {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    function scrollToFaq() {
+      document.getElementById('faqSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+
+    function checkRecentOrder() {
+      const order = window.Utils ? window.Utils.ambilLokal('pesanan_terakhir') : JSON.parse(localStorage.getItem('bbz_pesanan_terakhir') || 'null');
+      if (order && order.orderId) {
+        document.getElementById('displayOrderId').textContent = order.orderId;
+        document.getElementById('displayTotalPayment').textContent = order.formatted || ('Rp ' + Number(order.total || 0).toLocaleString('id-ID'));
+        document.getElementById('invoiceSection').classList.remove('hidden');
+        document.getElementById('invoiceSection').scrollIntoView({ behavior: 'smooth', block: 'start' });
+        showToast(`Memuat pesanan aktif: ${order.orderId}`);
+      } else {
+        showToast('Belum ada pesanan aktif.', true);
+      }
+    }
+
+    // FAQ Accordion Toggle
+    function toggleFaq(btn) {
+      const ans = btn.nextElementSibling;
+      const icon = btn.querySelector('.material-symbols-outlined');
+      const isHidden = ans.classList.contains('hidden');
+
+      if (isHidden) {
+        ans.classList.remove('hidden');
+        icon.style.transform = 'rotate(180deg)';
+      } else {
+        ans.classList.add('hidden');
+        icon.style.transform = 'rotate(0deg)';
+      }
+    }
+
+    // Live Search
+    document.getElementById('productSearchInput').addEventListener('input', function() {
+      renderCatalogGrid();
+    });
+
+    // Start on DOM ready
+    window.addEventListener('DOMContentLoaded', initStore);
+  </script>
+
+</body>
+</html>
